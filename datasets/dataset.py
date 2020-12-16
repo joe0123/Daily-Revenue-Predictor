@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 
-class Dataset():
-    def __init__(self, data_dir):
+class Dataset:
+    def __init__(self, data_dir, drop_cols):
         self.data_dir = data_dir
         self.load_df()
+        self.drop_cols = drop_cols
         self.create_feats()
 
     def load_df(self):
@@ -13,18 +14,19 @@ class Dataset():
         self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test.csv"))
         self.test_nolabel_df = pd.read_csv(os.path.join(self.data_dir, "test_nolabel.csv"))
     
-    def _build_feats(self, df, raw_col=None):
-        if raw_col:
-            df = df[self.test_raw_df.columns] 
-        df = df.drop(columns=["ID", "arrival_date_year", "company", "country"], errors="ignore")
-        df["agent"].astype("object")
-        df["children"] = df["children"].fillna(value=0)
+    def _build_feats(self, df):
+        df = df[self.test_raw_df.columns]
+        df = df.drop(columns=self.drop_cols, errors="ignore")
+        if "agent" in df:
+            df["agent"].astype("object")
+        if "children" in df:
+            df["children"] = df["children"].fillna(value=0)
         df = pd.get_dummies(df)
 
         return df
 
     def create_feats(self):
-        train_feat_df = self._build_feats(self.train_raw_df, raw_col=list(self.test_raw_df.columns))
+        train_feat_df = self._build_feats(self.train_raw_df)
         test_feat_df = self._build_feats(self.test_raw_df)
         cols = sorted(list(set(train_feat_df.columns) | set(test_feat_df.columns)))
         self.train_feat_df = train_feat_df.reindex(cols, fill_value=0, axis=1)

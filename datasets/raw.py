@@ -4,8 +4,8 @@ import pandas as pd
 from .dataset import Dataset
 
 class Raw_Dataset(Dataset):
-    def __init__(self, data_dir):
-       super(Raw_Dataset, self).__init__(data_dir)
+    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "company", "country"]):
+        super(Raw_Dataset, self).__init__(data_dir, drop_cols)
 
     def get_adr_data(self, numpy=True):
         train_x, train_y = self.train_feat_df, self.train_raw_df["adr"]
