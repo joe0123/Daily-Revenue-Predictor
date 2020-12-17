@@ -60,6 +60,8 @@ class Dataset:
             df["agent"] = df["agent"].astype("object")
         if "children" in df:
             df["children"] = df["children"].fillna(value=0)
+        if "country" in df:
+            df["country"] = df["country"].fillna(value="others")
         df = pd.get_dummies(df)
 
         return df
@@ -67,7 +69,7 @@ class Dataset:
     def create_feats(self):
         train_feat_df = self._build_feats(self.train_raw_df)
         test_feat_df = self._build_feats(self.test_raw_df)
-        cols = sorted(train_feat_df.columns)   #TODO intersect valid?
+        cols = sorted(train_feat_df.columns)
         self.train_feat_df = train_feat_df.reindex(cols, fill_value=0, axis=1)
         self.test_feat_df = test_feat_df.reindex(cols, fill_value=0, axis=1)
         if self.valid_dur:

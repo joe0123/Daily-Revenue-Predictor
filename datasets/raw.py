@@ -4,7 +4,7 @@ import pandas as pd
 from .dataset import Dataset
 
 class Raw_Dataset(Dataset):
-    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "company", "country"], durs=dict()):
+    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "agent", "company", "country"], durs=dict()):
         super(Raw_Dataset, self).__init__(data_dir, drop_cols, durs)
 
     def get_adr_data(self, numpy=True):
