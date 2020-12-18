@@ -69,10 +69,10 @@ class Dataset:
     def create_feats(self):
         train_feat_df = self._build_feats(self.train_raw_df)
         test_feat_df = self._build_feats(self.test_raw_df)
-        cols = sorted(train_feat_df.columns)
-        self.train_feat_df = train_feat_df.reindex(cols, fill_value=0, axis=1)
-        self.test_feat_df = test_feat_df.reindex(cols, fill_value=0, axis=1)
+        self.feat_cols = sorted(train_feat_df.columns)
+        self.train_feat_df = train_feat_df.reindex(self.feat_cols, fill_value=0, axis=1)
+        self.test_feat_df = test_feat_df.reindex(self.feat_cols, fill_value=0, axis=1)
         if self.valid_dur:
             valid_feat_df = self._build_feats(self.valid_raw_df)
-            self.valid_feat_df = valid_feat_df.reindex(cols, fill_value=0, axis=1)
+            self.valid_feat_df = valid_feat_df.reindex(self.feat_cols, fill_value=0, axis=1)
 
