@@ -20,8 +20,12 @@ class Dataset:
     def _build_date_group(self, df):
         month_int = dict(zip(["January", "February", "March", "April", "May", "June", "July", "August", \
                 "September", "October", "November", "December"], ["{:02d}".format(i) for i in range(1, 13)]))
-        return df["arrival_date_year"].astype("str").str.cat(  \
-                    [df["arrival_date_month"].apply(month_int.get), df["arrival_date_day_of_month"].astype("str")], sep='-')
+        date_group = df["arrival_date_year"].astype("str").str.cat(  \
+                    [df["arrival_date_month"].apply(month_int.get), 
+                    df["arrival_date_day_of_month"].apply(lambda i: "{:02d}".format(i))], sep='-').tolist()
+        assert all(date_group[i] <= date_group[i + 1] for i in range(len(date_group) - 1))
+        
+        return date_group
 
     def create_groups(self):
         self.train_group = self._build_date_group(self.train_raw_df)
@@ -31,6 +35,7 @@ class Dataset:
     def _is_fit_date(self, date_df, dur):
         date_df = pd.to_datetime(date_df)
         dur = pd.to_datetime(dur)
+        
         return (date_df >= dur[0]) & (date_df <= dur[1])
 
     def cut_df(self, dur):
