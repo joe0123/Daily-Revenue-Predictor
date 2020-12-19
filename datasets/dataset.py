@@ -85,6 +85,9 @@ class Dataset:
 
         return train_x, train_y, test_x
     
-    def get_groups(self):
-        return self.train_group, self.test_group
-
+    def get_groups(self, case):
+        return getattr(self, "{}_group".format(case))
+    
+    def get_stay_nights(self, case):
+        df = getattr(self, "{}_raw_df".format(case))
+        return (df.stays_in_weekend_nights.to_numpy() + df.stays_in_week_nights.to_numpy()).tolist()

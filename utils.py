@@ -76,5 +76,8 @@ class GroupTimeSeriesSplit(_BaseKFold):
                        np.concatenate(groups[test_start:test_start + test_size]))
 
 def group_sum(a, groups):
-    a = pd.Series(a)
-    return a.groupby(groups).sum().tolist()
+    a = pd.DataFrame({"arr": a, "group": groups})
+    return a.groupby("group").sum()["arr"].tolist()
+
+
+#print(group_sum(np.array([1, 2, 3, 4]), ["2015-01-01", "2015-01-01", "2039-04-04", "2039-04-04"]))
