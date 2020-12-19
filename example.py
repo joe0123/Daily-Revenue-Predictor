@@ -18,8 +18,6 @@ if __name__ == "__main__":
     test_total_nights = np.array(dataset.get_stay_nights("test"))
     gtss = GroupTimeSeriesSplit(n_splits=5)
 
-    a = np.unique(groups)
-
 # Start time-series validation
     errs = []
     for train_i, train_group_i, valid_i, valid_group_i in gtss.split(adr_x, groups=groups, pass_splits=0):
