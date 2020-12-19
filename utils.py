@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from sklearn.utils import indexable
 from sklearn.utils.validation import _num_samples
 from sklearn.model_selection._split import _BaseKFold
@@ -73,3 +74,7 @@ class GroupTimeSeriesSplit(_BaseKFold):
             else:
                 yield (np.concatenate(groups[:test_start]),
                        np.concatenate(groups[test_start:test_start + test_size]))
+
+def group_sum(a, groups):
+    a = pd.Series(a)
+    return a.groupby(groups).sum().tolist()
