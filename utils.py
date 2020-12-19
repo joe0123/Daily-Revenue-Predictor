@@ -14,12 +14,9 @@ class GroupTimeSeriesSplit(_BaseKFold):
     ----------
     n_splits : int, default=5
         Number of splits. Must be at least 2.
-    max_train_size : int, default=None
-        Maximum size for a single training set.
     """
-    def __init__(self, n_splits=5, *, max_train_size=None):
+    def __init__(self, n_splits=5):
         super().__init__(n_splits, shuffle=False, random_state=None)
-        self.max_train_size = max_train_size
 
     def split(self, X, y=None, groups=None, pass_splits=0):
         """
@@ -60,24 +57,24 @@ class GroupTimeSeriesSplit(_BaseKFold):
         if n_folds > n_groups:
             raise ValueError(
                 ("Cannot have number of folds ={0} greater than the number of groups: {1}.").format(n_folds, n_groups))
-        test_size = (n_groups // n_folds)
+        test_size = (n_groups // n_folds)   # TODO
         test_starts = range(test_size + n_groups % n_folds,
                             n_groups, test_size)
         for test_start in test_starts[pass_splits:]:
-            if self.max_train_size:
-                train_start = np.searchsorted(
-                    np.cumsum(
-                        group_counts[:test_start][::-1])[::-1] < self.max_train_size + 1, 
-                        True)
-                yield (np.concatenate(groups[train_start:test_start]),
-                       np.concatenate(groups[test_start:test_start + test_size]))
-            else:
-                yield (np.concatenate(groups[:test_start]),
-                       np.concatenate(groups[test_start:test_start + test_size]))
+            yield (np.concatenate(groups[:test_start]),
+                    np.arange(0, test_start),
+                    np.concatenate(groups[test_start:test_start + test_size]),
+                    np.arange(test_start, test_start + test_size))
 
 def group_sum(a, groups):
+    assert len(a) == len(groups)
     a = pd.DataFrame({"arr": a, "group": groups})
     return a.groupby("group").sum()["arr"].tolist()
 
-
-#print(group_sum(np.array([1, 2, 3, 4]), ["2015-01-01", "2015-01-01", "2039-04-04", "2039-04-04"]))
+def predict_daily_revenue(model_adr, model_cancel, adr_x, cancel_x, total_nights, groups):
+    pred_adr = model_adr.predict(adr_x) 
+    pred_cancel = model_cancel.predict(cancel_x)
+    #pred_cancel = model_cancel.predict_proba(cancel_x)[:, 1]
+    result = group_sum(pred_adr * (1 - pred_cancel) * total_nights, groups)
+    result = np.array([np.clip(i // 10000, 0, 9) for i in result])
+    return result
