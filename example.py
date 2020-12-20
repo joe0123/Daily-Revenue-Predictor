@@ -6,6 +6,9 @@ from sklearn.ensemble import RandomForestClassifier
 from datasets import Dataset
 from utils import *
 
+MODEL_ADR = Lasso(alpha=0.01, max_iter=1e+5)
+MODEL_CANCEL = LogisticRegression(max_iter=1e+5)
+
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
@@ -24,12 +27,12 @@ if __name__ == "__main__":
     # Train adr model (regression)
         train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
         valid_adr_x, valid_adr_y = adr_x[valid_i], adr_y[valid_i]
-        model_adr = Lasso(alpha=0.01, max_iter=1e+5).fit(train_adr_x, train_adr_y)
+        model_adr = MODEL_ADR.fit(train_adr_x, train_adr_y)
     
     # Train is_cancel model (classification)
         train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
         valid_cancel_x, valid_cancel_y = cancel_x[valid_i], cancel_y[valid_i]
-        model_cancel = LogisticRegression(max_iter=1e+5).fit(train_cancel_x, train_cancel_y)
+        model_cancel = MODEL_CANCEL.fit(train_cancel_x, train_cancel_y)
     
     # Calc daily revenue's error
         result = predict_daily_revenue(model_adr, model_cancel, valid_adr_x, valid_cancel_x, \
@@ -40,8 +43,8 @@ if __name__ == "__main__":
     print("Time Series Validation Error: {} {}".format(np.mean(errs), errs))
 
 # Start training
-    model_adr = Lasso(alpha=0.01, max_iter=1e+5).fit(adr_x, adr_y)
-    model_cancel = LogisticRegression(max_iter=1e+5).fit(cancel_x, cancel_y)
+    model_adr = MODEL_ADR.fit(adr_x, adr_y)
+    model_cancel = MODEL_CANCEL.fit(cancel_x, cancel_y)
 
 # Start testing and Write the result file
     result = predict_daily_revenue(model_adr, model_cancel, test_adr_x, test_cancel_x, \
