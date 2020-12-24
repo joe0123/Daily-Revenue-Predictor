@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
 # Start time-series validation
     errs = []
-    for train_i, train_group_i, valid_i, valid_group_i in gtss.split(adr_x, groups=groups, pass_splits=0):
+    for train_i, train_group_i, valid_i, valid_group_i in gtss.split(adr_x, groups=groups, return_group_i=True):
     # Train adr model (regression)
         train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
         valid_adr_x, valid_adr_y = adr_x[valid_i], adr_y[valid_i]
@@ -37,10 +37,10 @@ if __name__ == "__main__":
     # Calc daily revenue's error
         result = predict_daily_revenue(model_adr, model_cancel, valid_adr_x, valid_cancel_x, \
                                         total_nights[valid_i], groups[valid_i])
-        err = np.mean(np.abs(result - labels[valid_group_i]))
+        err = np.around(np.mean(np.abs(result - labels[valid_group_i])), decimals=2)
         errs.append(err)
     
-    print("Time Series Validation Error: {} {}".format(np.mean(errs), errs))
+    print("Time Series Validation Error: {:.2f} {}".format(np.mean(errs), errs))
 
 # Start training
     model_adr = MODEL_ADR.fit(adr_x, adr_y)

@@ -18,7 +18,7 @@ class GroupTimeSeriesSplit(_BaseKFold):
     def __init__(self, n_splits=5):
         super().__init__(n_splits, shuffle=False, random_state=None)
 
-    def split(self, X, y=None, groups=None, pass_splits=0):
+    def split(self, X, y=None, groups=None, select_splits=None, return_group_i=False):
         """
         Generate indices to split data into training and test set.
 
@@ -33,8 +33,6 @@ class GroupTimeSeriesSplit(_BaseKFold):
             Group labels for the samples used while splitting the dataset into 
             train/test set.
             Most often just a time feature.
-        pass_splits : int
-            Pass first n splits.
 
         Yields
         -------
@@ -44,9 +42,6 @@ class GroupTimeSeriesSplit(_BaseKFold):
             The testing set indices for that split.
         """
         n_splits = self.n_splits
-        if pass_splits >= n_splits:
-            raise ValueError(
-                ("Note that pass_splits = {0} must smaller than the number of splits: {1}.").format(pass_splits, n_splits))
         X, y, groups = indexable(X, y, groups)
         n_samples = _num_samples(X)
         n_folds = n_splits + 1
@@ -57,14 +52,22 @@ class GroupTimeSeriesSplit(_BaseKFold):
         if n_folds > n_groups:
             raise ValueError(
                 ("Cannot have number of folds ={0} greater than the number of groups: {1}.").format(n_folds, n_groups))
-        test_size = (n_groups // n_folds)   # TODO
-        test_starts = range(test_size + n_groups % n_folds,
+        test_size = (n_groups // n_folds)
+        test_starts = np.arange(test_size + n_groups % n_folds,
                             n_groups, test_size)
-        for test_start in test_starts[pass_splits:]:
-            yield (np.concatenate(groups[:test_start]),
-                    np.arange(0, test_start),
-                    np.concatenate(groups[test_start:test_start + test_size]),
-                    np.arange(test_start, test_start + test_size))
+        if not select_splits:
+            select_splits = range(len(test_starts))
+        if return_group_i:
+            for test_start in test_starts[select_splits]:
+                yield (np.concatenate(groups[:test_start]),
+                        np.arange(0, test_start),
+                        np.concatenate(groups[test_start:test_start + test_size]),
+                        np.arange(test_start, test_start + test_size))
+        else:
+            for test_start in test_starts[select_splits]:
+                yield (np.concatenate(groups[:test_start]),
+                        np.concatenate(groups[test_start:test_start + test_size]))
+
 
 def group_sum(a, groups):
     assert len(a) == len(groups)
