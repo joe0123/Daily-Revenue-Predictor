@@ -3,6 +3,37 @@ import pandas as pd
 from sklearn.utils import indexable
 from sklearn.utils.validation import _num_samples
 from sklearn.model_selection._split import _BaseKFold
+from sklearn.base import BaseEstimator, ClassifierMixin
+
+class DailyRevenueEstimator(BaseEstimator):
+    def __init__(self, adr_model, cancel_model):
+        self.adr_model = adr_model
+        self.cancel_model = cancel_model
+
+    def fit(self, adr_x, adr_y, cancel_x, cancel_y):
+        self.adr_model = self.adr_model.fit(adr_x, adr_y)
+        self.cancel_model = self.cancel_model.fit(cancel_x, cancel_y)
+        return self
+
+    def predict(self, adr_x, cancel_x, total_nights, groups):
+        result = predict_daily_revenue(self.adr_model, self.cancel_model, adr_x, cancel_x, total_nights, groups)
+        return result
+
+    def score(self, adr_x, cancel_x, y, total_nights, groups):
+        result = self.predict(adr_x, cancel_x, total_nights, groups)
+        err = np.mean(np.abs(result - y))
+        return err
+
+    def set_params(self, params):
+        for (case, param), value in params.items():
+            if case == "adr":
+                self.adr_model.set_params(**{param: value})
+            elif case == "cancel":
+                self.cancel_model.set_params(**{param: value})
+            else:
+                print("Invalid parameter case!")
+                exit()
+
 
 class GroupTimeSeriesSplit(_BaseKFold):
     """
