@@ -1,2 +1,10 @@
 nohup: 忽略輸入
 Lasso(max_iter=100000000.0, tol=1e-06)
+30.547850281026076 {'alpha': 0.001}
+
+
+Ridge(max_iter=100000000.0, tol=1e-06)
+31.189308164947487 {'alpha': 0.001}
+
+
+HuberRegressor(max_iter=100000000.0, tol=1e-06)

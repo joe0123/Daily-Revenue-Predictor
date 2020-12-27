@@ -35,5 +35,5 @@ for model, params_ in zip(models, params):
     print(model, flush=True)
     cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2], return_group_i=False)
     clf = GridSearchCV(model, params_, scoring="neg_mean_absolute_error", cv=cv).fit(adr_x, adr_y)
-    print(-clf.best_score_, clf.best_params, flush=True)
+    print(-clf.best_score_, clf.best_params_, flush=True)
     print('\n')
