@@ -2,7 +2,7 @@ import numpy as np
 from tqdm import tqdm
 import itertools
 from sklearn.model_selection import ParameterGrid
-from sklearn.linear_model import LinearRegression, Lasso, Ridge
+from sklearn.linear_model import LinearRegression, Lasso, Ridge, HuberRegressor
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import SelectFromModel
@@ -11,16 +11,19 @@ from sklearn.pipeline import Pipeline
 from datasets import Dataset
 from utils import *
 
-#MODEL_ADR = Lasso(alpha=0.01, max_iter=1e+5)
-#MODEL_CANCEL = LogisticRegression(max_iter=1e+5)
+#MODEL_ADR = Lasso(max_iter=1e+5)
 MODEL_ADR = Pipeline([("feature_selection", SelectFromModel(Lasso(max_iter=1e+8))), \
                         ("regression", Ridge(max_iter=1e+8))])
-MODEL_CANCEL = Pipeline([("feature_selection", SelectFromModel(Lasso(max_iter=1e+8))), \
+                        #("regression", HuberRegressor(max_iter=1e+8))])
+#MODEL_CANCEL = LogisticRegression(max_iter=1e+5)
+MODEL_CANCEL = Pipeline([("feature_selection", SelectFromModel(LogisticRegression(penalty="l1", solver="liblinear", \
+                                                                random_state=0, max_iter=1e+8))), \
                         ("classifier", LogisticRegression(max_iter=1e+8))])
 PARAM_GRID = {("adr", "feature_selection__estimator__alpha"): [1e-1, 1e-2, 1e-3], \
-                ("adr", "regression__alpha"): [1, 1e-1, 1e-2, 1e-3], \
-                ("cancel", "feature_selection__estimator__alpha"): [1e-1, 1e-2, 1e-3], \
-                ("cancel", "classifier__C"): [1e+2, 1e+1, 1, 1e-1, 1e-2]}
+                #("adr", "regression__epsilon"): [1.35, 1.5, 1.75, 1.9], \
+                ("adr", "regression__alpha"): [1e-1, 1e-2, 1e-3], \
+                ("cancel", "feature_selection__estimator__C"): [1e+2, 1e+1, 1, 1e-1], \
+                ("cancel", "classifier__C"): [1e+3, 1e+2, 1e+1]}
 
 if __name__ == "__main__":
 # Initialization
@@ -36,6 +39,7 @@ if __name__ == "__main__":
     model = DailyRevenueEstimator(MODEL_ADR, MODEL_CANCEL)
     
     cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2], return_group_i=True)
+    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5), return_group_i=True)
     param_grid = ParameterGrid(PARAM_GRID)
 
 # Start grid search
