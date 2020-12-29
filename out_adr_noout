@@ -1,21 +1,21 @@
 nohup: 忽略輸入
 Lasso(max_iter=100000000.0, tol=1e-06)
-30.547850281026076 {'alpha': 0.001}
+31.15473334679243 {'alpha': 0.001}
 
 
 Ridge(max_iter=100000000.0, tol=1e-06)
-31.189308164947487 {'alpha': 0.001}
+30.647268011914687 {'alpha': 0.001}
 
 
 HuberRegressor(max_iter=100000000.0, tol=1e-06)
-33.6880557677219 {'alpha': 0.1, 'epsilon': 1.75}
+33.103407685835265 {'alpha': 0.001, 'epsilon': 1.75}
 
 
 Pipeline(steps=[('feature_selection',
                  SelectFromModel(estimator=Lasso(max_iter=100000000.0,
                                                  tol=1e-06))),
                 ('regression', Ridge(max_iter=100000000.0, tol=1e-06))])
-29.878911493408257 {'feature_selection__estimator__alpha': 0.001, 'regression__alpha': 0.1}
+31.80013372840845 {'feature_selection__estimator__alpha': 0.01, 'regression__alpha': 0.001}
 
 
 Pipeline(steps=[('feature_selection',
@@ -23,6 +23,6 @@ Pipeline(steps=[('feature_selection',
                                                  tol=1e-06))),
                 ('regression',
                  HuberRegressor(max_iter=100000000.0, tol=1e-06))])
-34.013553423465275 {'feature_selection__estimator__alpha': 0.1, 'regression__alpha': 0.001, 'regression__epsilon': 1.75}
+31.485426414770355 {'feature_selection__estimator__alpha': 0.001, 'regression__alpha': 0.001, 'regression__epsilon': 1.75}
 
 

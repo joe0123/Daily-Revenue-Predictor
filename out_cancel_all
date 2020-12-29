@@ -1,0 +1,19 @@
+nohup: 忽略輸入
+LogisticRegression(max_iter=100000000.0, penalty='l1', random_state=0,
+                   solver='liblinear')
+0.7826687381322286 {'C': 10.0}
+
+
+LogisticRegression(max_iter=100000000.0)
+0.7826111974221762 {'C': 100.0}
+
+
+Pipeline(steps=[('feature_selection',
+                 SelectFromModel(estimator=LogisticRegression(max_iter=100000000.0,
+                                                              penalty='l1',
+                                                              random_state=0,
+                                                              solver='liblinear'))),
+                ('classifier', LogisticRegression(max_iter=100000000.0))])
+0.7823234938719144 {'classifier__C': 100.0, 'feature_selection__estimator__C': 100.0}
+
+

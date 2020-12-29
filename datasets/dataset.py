@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 class Dataset:
-    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "agent", "company", "country"], dur=None):
+    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "company"], dur=None):
         self.data_dir = data_dir
         self.load_df()
         self.create_groups()
@@ -48,6 +48,7 @@ class Dataset:
         df = df.drop(columns=drop_cols, errors="ignore")
         if "agent" in df:
             df["agent"] = df["agent"].astype("object")
+            df["agent"] = df["agent"].fillna(value="others")
         if "children" in df:
             df["children"] = df["children"].fillna(value=0)
         if "country" in df:

@@ -5,6 +5,9 @@ from sklearn.utils.validation import _num_samples
 from sklearn.model_selection._split import _BaseKFold
 from sklearn.base import BaseEstimator, ClassifierMixin
 
+
+
+
 class DailyRevenueEstimator(BaseEstimator):
     def __init__(self, adr_model, cancel_model):
         self.adr_model = adr_model
