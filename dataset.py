@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OrdinalEncoder
 
 class Dataset:
     def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "company"], dur=None):
@@ -47,45 +47,56 @@ class Dataset:
         df = df[self.test_raw_df.columns]
         df = df.drop(columns=drop_cols, errors="ignore")
         if "agent" in df:
+            df["agent"] = df["agent"].fillna(value=0)
             df["agent"] = df["agent"].astype("object")
-            df["agent"] = df["agent"].fillna(value="others")
         if "children" in df:
             df["children"] = df["children"].fillna(value=0)
         if "country" in df:
             df["country"] = df["country"].fillna(value="others")
-        df = pd.get_dummies(df)
+        
+        return df, pd.get_dummies(df)
 
-        return df
+    def _align_feats(self, train_df, test_df):
+        feat_cols = sorted(train_df.columns)
+        train_df = train_df.reindex(feat_cols, fill_value=0, axis=1)
+        test_df = test_df.reindex(feat_cols, fill_value=0, axis=1)
+        
+        return train_df, test_df, feat_cols
+
 
     def create_feats(self, drop_cols):
-        train_feat_df = self._build_feats(self.train_raw_df, drop_cols)
-        test_feat_df = self._build_feats(self.test_raw_df, drop_cols)
-        self.feat_cols = sorted(train_feat_df.columns)
-        self.train_feat_df = train_feat_df.reindex(self.feat_cols, fill_value=0, axis=1)
-        self.test_feat_df = test_feat_df.reindex(self.feat_cols, fill_value=0, axis=1)
+        train_feat_df, train_ohfeat_df = self._build_feats(self.train_raw_df, drop_cols)
+        test_feat_df, test_ohfeat_df = self._build_feats(self.test_raw_df, drop_cols)
+        self.train_feat_df, self.test_feat_df, self.feat_cols = self._align_feats(train_feat_df, test_feat_df)
+        self.train_ohfeat_df, self.test_ohfeat_df, self.ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
 
-    def get_adr_data(self, numpy=True):
-        train_x, train_y = self.train_feat_df, self.train_raw_df["adr"]
-        test_x = self.test_feat_df
+        encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
+        for col in train_feat_df.select_dtypes(exclude="number").columns:
+            self.train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+            self.test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+
+    def get_adr_data(self, onehot_x=False):
+        if onehot_x:
+            train_x = self.train_ohfeat_df
+            test_x = self.test_ohfeat_df
+        else:
+            train_x = self.train_feat_df
+            test_x = self.test_feat_df
+        train_y = self.train_raw_df["adr"]
         
-        if numpy:
-            train_x = train_x.to_numpy()
-            train_y = train_y.to_numpy()
-            test_x = test_x.to_numpy()
-
-        return train_x, train_y, test_x
+        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()
  
-    def get_cancel_data(self, numpy=True):
-        train_x, train_y = self.train_feat_df, self.train_raw_df["is_canceled"]
-        test_x = self.test_feat_df
+    def get_cancel_data(self, onehot_x=False):
+        if onehot_x:
+            train_x = self.train_ohfeat_df
+            test_x = self.test_ohfeat_df
+        else:
+            train_x = self.train_feat_df
+            test_x = self.test_feat_df
+        train_y = self.train_raw_df["is_canceled"]
         
-        if numpy:
-            train_x = train_x.to_numpy()
-            train_y = train_y.to_numpy()
-            test_x = test_x.to_numpy()
-
-        return train_x, train_y, test_x
-    
+        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()
+ 
     def get_groups(self, case):
         return getattr(self, "{}_group".format(case))
     

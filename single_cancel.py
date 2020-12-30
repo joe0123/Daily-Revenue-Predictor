@@ -1,34 +1,41 @@
-from sklearn.linear_model import LogisticRegression
+import sys
+import json
+from sklearn.linear_model import LinearRegression, Lasso, Ridge
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.preprocessing import OrdinalEncoder
 from sklearn.feature_selection import SelectFromModel
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import GridSearchCV
+from sklearn.compose import make_column_transformer, make_column_selector
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 
-from datasets import *
+from dataset import Dataset
 from utils import *
 
-# Initialization
-dataset = Dataset("./data")
-cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data()
-groups = np.array(dataset.get_groups("train"))
-
-models = [LogisticRegression(penalty="l1", solver="liblinear", random_state=0, max_iter=1e+8),
-        LogisticRegression(max_iter=1e+8),
-        Pipeline([("feature_selection", SelectFromModel(LogisticRegression(penalty="l1", solver="liblinear", \
-                                                                random_state=0, max_iter=1e+8))), \
-                        ("classifier", LogisticRegression(max_iter=1e+8))])
-]
-
-params = [{"C": [1e+3, 1e+2, 1e+1, 1, 1e-1]},
-        {"C": [1e+3, 1e+2, 1e+1, 1, 1e-1]},
-        {"feature_selection__estimator__C": [1e+2, 1e+1, 1, 1e-1], \
-            "classifier__C": [1e+3, 1e+2, 1e+1, 1, 1e-1]}
-]
-
-# Start grid search
-for model, params_ in zip(models, params):
-    print(model, flush=True)
-    cv = GroupTimeSeriesSplit(n_splits=5).split(cancel_x, groups=groups, select_splits=[2], return_group_i=False)
-    clf = GridSearchCV(model, params_, cv=cv, n_jobs=8).fit(cancel_x, cancel_y)
-    results = clf.cv_results_
-    print(sorted(zip(results["mean_test_score"], results["params"]), reverse=True))
-    print('\n')
+if __name__ == "__main__":
+    dataset = Dataset(root + "/data", do_dummies=True)
+    train_x, train_y, _ = dataset.get_cancel_data()
+    print(train_x.shape)
+    groups = dataset.get_groups("train")
+    models = [weighted(RandomForestClassifier)(random_state=0, n_jobs=4)]
+    models = [RandomForestClassifier(random_state=0, n_jobs=4)]
+    params_grid = [{
+        'criterion': ['entropy', 'gini'],
+        'n_estimators': [200, 400, 600, 800, 1000],
+        'max_features': ['auto', None],
+        'max_depth': [8, 10, 20, 40, 60, 80, 100, None],
+        'min_samples_split': [2e-4, 1e-3, 2e-3, 1e-2],
+        'min_samples_leaf': [1e-4, 5e-4, 1e-3, 5e-3], }]
+    print(params_grid)
+    splits = range(2, 5)
+    for model, params_grid in zip(models, params_grids):
+        cv = GroupTimeSeriesSplit(n_splits=5).split(train_x, groups=groups, select_splits=splits)
+        results = single_search_cv(x=train_x, y=train_y, groups=groups, model=model, params_grid=params_grid, cv=cv, \
+                            scoring="neg_mean_absolute_error", n_iter=5, random_state=0, n_jobs=4)
+        
+        print_format = lambda sort_key: json.dumps(sorted(results, key=sort_key, reverse=True), indent=4)
+        
+        print("mean_score:", print_format(sort_key=lambda item: item["mean_score"]))
+        for i, split in enumerate(splits):
+            print("split{}_score:".format(split), print_format(sort_key=lambda item: item["scores"][i]))
+        print('\n')
