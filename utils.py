@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import json
+import time
 import itertools
 from functools import partial
 from joblib import Parallel, delayed
@@ -19,9 +21,11 @@ def weighted(base, weight_ratio):
     return WeightedEstimator
 
 def _single_cv(params, x, y, groups, model, cv, scoring):
-    errs = []
+    start_time = time.time()
+    train_errs = []
+    valid_errs = []
     model.set_params(**params)
-    for train_i, (train_gi, _), valid_i, (valid_gi, valid_gn) in cv:
+    for train_i, (train_gi, train_gn), valid_i, (valid_gi, valid_gn) in cv:
         train_x, train_y = x[train_i], y[train_i]
         valid_x, valid_y = x[valid_i], y[valid_i]
         if "WeightedEstimator" == type(model).__name__:
@@ -30,17 +34,24 @@ def _single_cv(params, x, y, groups, model, cv, scoring):
             model.fit(train_x, train_y, focus)
         else:
             model = model.fit(train_x, train_y)
+        
+        scorer = get_scorer(scoring)
+        train_err = scorer(model, train_x, train_y)
+        train_errs.append(np.around(train_err, decimals=4))
+        valid_err = scorer(model, valid_x, valid_y)
+        valid_errs.append(np.around(valid_err, decimals=4))
 
-        err = get_scorer(scoring)(model, valid_x, valid_y)
-        errs.append(err)
-    
-    return {"mean_score": np.mean(errs), "scores": errs, "params": params}
+    dur = np.around(time.time() - start_time, decimals=2)
+    result = {"mean_score": np.around(np.mean(valid_errs), decimals=4), \
+                "valid_scores": valid_errs, "train_scores": train_errs, "params": params}
+    print("\n{} sec -- ".format(dur), result, sep='', flush=True)
+    return result
 
 def single_search_cv(x, y, groups, model, params_grid, cv, scoring, n_iter=None, random_state=0, n_jobs=1):
     params_grid = shuffle(ParameterGrid(params_grid), random_state=random_state, n_samples=n_iter)
     cv_result = [i for i in cv]
     single_cv = partial(_single_cv, x=x, y=y, groups=groups, model=model, cv=cv_result, scoring=scoring)
-    record = Parallel(n_jobs=n_jobs, verbose=50)(delayed(single_cv)(params) for params in params_grid)
+    record = Parallel(n_jobs=n_jobs)(delayed(single_cv)(params) for params in params_grid)
     
     return record
 

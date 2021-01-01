@@ -58,6 +58,7 @@ class Dataset:
 
     def _align_feats(self, train_df, test_df):
         feat_cols = sorted(train_df.columns)
+        #feat_cols = sorted(list(set(train_df.columns) & set(test_df.columns)))
         train_df = train_df.reindex(feat_cols, fill_value=0, axis=1)
         test_df = test_df.reindex(feat_cols, fill_value=0, axis=1)
         

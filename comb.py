@@ -10,17 +10,19 @@ from sklearn.pipeline import Pipeline
 from dataset import Dataset
 from utils import *
 
-MODEL_ADR = RandomForestRegressor(n_estimators=1000, min_samples_split=2, min_samples_leaf=1, max_features="sqrt", max_depth=None, criterion="mse", random_state=0, n_jobs=-1)
+MODEL_ADR = RandomForestRegressor(n_estimators=800, min_samples_split=2, min_samples_leaf=1, max_features="auto", max_depth=60, criterion="mse", random_state=0, n_jobs=-1)
 print(MODEL_ADR)
 
-MODEL_CANCEL = RandomForestClassifier(n_estimators=2000, min_samples_split=2e-4, min_samples_leaf=1e-4, max_features=None, max_depth=10, criterion="entropy", random_state=0, n_jobs=-1)
+MODEL_CANCEL = RandomForestClassifier(n_estimators=400, min_samples_split=2e-3, min_samples_leaf=5e-4, max_features=None, max_depth=10, criterion="entropy", random_state=0, n_jobs=-1)
 print(MODEL_CANCEL)
 
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
     adr_x, adr_y, test_adr_x = dataset.get_adr_data(onehot_x=True)
-    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=False)
+    print(adr_x.shape)
+    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=True)
+    print(cancel_x.shape)
     groups = np.array(dataset.get_groups("train"))
     total_nights = np.array(dataset.get_stay_nights("train"))
     labels = dataset.train_label_df["label"].to_numpy()
@@ -29,17 +31,17 @@ if __name__ == "__main__":
     
     model = DailyRevenueEstimator(MODEL_ADR, MODEL_CANCEL)
     
-    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2], return_group_i=True)
-    cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5), return_group_i=True)
+    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2])
+    cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5))
 
 # Start CV
     errs = []
-    for train_i, train_group_i, valid_i, valid_group_i in tqdm(cv):
+    for train_i, (train_gi, _), valid_i, (valid_gi, _) in tqdm(cv):
         train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
         valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
         train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
         valid_cancel_x, _ = cancel_x[valid_i], cancel_y[valid_i]
-        valid_labels = labels[valid_group_i]
+        valid_labels = labels[valid_gi]
 
         model = model.fit(train_adr_x, train_adr_y, train_cancel_x, train_cancel_y)
 
