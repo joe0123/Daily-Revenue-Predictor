@@ -10,7 +10,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '2'
 
 if __name__ == "__main__":
     dataset = Dataset("./data")
-    train_x, train_y, _ = dataset.get_cancel_data(onehot_x=True)
+    train_x, train_y, _ = dataset.get_cancel_data(onehot_x=False)
     print(train_x.shape)
     groups = dataset.get_groups("train")
     #models = [weighted(XGBClassifier, 1.2)(random_state=0, n_jobs=-1)]
@@ -19,13 +19,13 @@ if __name__ == "__main__":
     params_grids = [{
         "n_estimators": [100],
         "learning_rate": [0.1],
-        "min_child_weight": [10],
-        "max_depth": [3],
+        "min_child_weight": [12],
+        "max_depth": [4],
         "gamma": [1],
-        "subsample": [0.6],
+        "subsample": [0.7],
         "colsample_bytree": [0.9],
-        "reg_lambda": [1],
-        "reg_alpha": [1e-1],
+        "reg_lambda": [1e+1, 1, 1e-1, 1e-2, 1e-3],
+        "reg_alpha": [1, 1e-1, 1e-2, 1e-3, 0],
     }]
     print(params_grids, flush=True)
     splits = range(2, 5)

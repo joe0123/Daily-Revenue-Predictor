@@ -1,0 +1,112 @@
+nohup: 忽略輸入
+(91531, 26)
+[{'n_estimators': [100], 'learning_rate': [0.1], 'min_child_weight': [1], 'max_depth': [5], 'gamma': [0], 'subsample': [0.8], 'colsample_bytree': [0.8], 'reg_lambda': [1], 'reg_alpha': [0]}]
+
+1.94 sec -- {'mean_score': 0.7995, 'valid_scores': [0.8054, 0.7763, 0.8169], 'train_scores': [0.9122, 0.8972, 0.8864], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 100, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+mean_score: [
+    {
+        "mean_score": 0.7995,
+        "valid_scores": [
+            0.8054,
+            0.7763,
+            0.8169
+        ],
+        "train_scores": [
+            0.9122,
+            0.8972,
+            0.8864
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 100,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split2_score: [
+    {
+        "mean_score": 0.7995,
+        "valid_scores": [
+            0.8054,
+            0.7763,
+            0.8169
+        ],
+        "train_scores": [
+            0.9122,
+            0.8972,
+            0.8864
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 100,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split3_score: [
+    {
+        "mean_score": 0.7995,
+        "valid_scores": [
+            0.8054,
+            0.7763,
+            0.8169
+        ],
+        "train_scores": [
+            0.9122,
+            0.8972,
+            0.8864
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 100,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split4_score: [
+    {
+        "mean_score": 0.7995,
+        "valid_scores": [
+            0.8054,
+            0.7763,
+            0.8169
+        ],
+        "train_scores": [
+            0.9122,
+            0.8972,
+            0.8864
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 100,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+
+
