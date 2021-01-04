@@ -1,0 +1,1974 @@
+nohup: 忽略輸入
+(91531, 542)
+[{'min_child_weight': [1], 'max_depth': [5], 'gamma': [0], 'subsample': [0.8], 'colsample_bytree': [0.8], 'reg_lambda': [1], 'reg_alpha': [0], 'n_estimators': [300, 400, 500, 600, 700], 'learning_rate': [0.2, 0.1, 0.05, 0.02]}]
+
+22.18 sec -- {'mean_score': 0.7973, 'valid_scores': [0.7956, 0.7743, 0.8221], 'train_scores': [0.9153, 0.9008, 0.891], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 600, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.02, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+15.59 sec -- {'mean_score': 0.8004, 'valid_scores': [0.7919, 0.7868, 0.8225], 'train_scores': [0.9489, 0.9302, 0.92], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+24.29 sec -- {'mean_score': 0.7969, 'valid_scores': [0.7943, 0.7756, 0.8209], 'train_scores': [0.917, 0.9021, 0.8934], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 700, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.02, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+19.88 sec -- {'mean_score': 0.8037, 'valid_scores': [0.8013, 0.7874, 0.8225], 'train_scores': [0.9426, 0.9242, 0.9147], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 600, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+15.86 sec -- {'mean_score': 0.7982, 'valid_scores': [0.7964, 0.7783, 0.8199], 'train_scores': [0.9163, 0.9022, 0.8933], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 300, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+19.99 sec -- {'mean_score': 0.7963, 'valid_scores': [0.7945, 0.7726, 0.8219], 'train_scores': [0.9134, 0.8979, 0.8892], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 500, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.02, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+15.27 sec -- {'mean_score': 0.8025, 'valid_scores': [0.7986, 0.785, 0.8239], 'train_scores': [0.9344, 0.9162, 0.9072], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+19.06 sec -- {'mean_score': 0.7997, 'valid_scores': [0.7996, 0.7816, 0.818], 'train_scores': [0.9275, 0.9113, 0.9034], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 600, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+22.49 sec -- {'mean_score': 0.7968, 'valid_scores': [0.7929, 0.7835, 0.814], 'train_scores': [0.9627, 0.9454, 0.9342], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 700, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+18.13 sec -- {'mean_score': 0.7984, 'valid_scores': [0.7949, 0.7827, 0.8177], 'train_scores': [0.9552, 0.9359, 0.9256], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 500, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+14.21 sec -- {'mean_score': 0.8016, 'valid_scores': [0.797, 0.7852, 0.8226], 'train_scores': [0.9284, 0.9112, 0.9036], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 300, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+22.43 sec -- {'mean_score': 0.8004, 'valid_scores': [0.7998, 0.7819, 0.8196], 'train_scores': [0.9306, 0.9136, 0.9052], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 700, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+21.69 sec -- {'mean_score': 0.8028, 'valid_scores': [0.7992, 0.7878, 0.8215], 'train_scores': [0.9456, 0.9277, 0.9176], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 700, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+19.22 sec -- {'mean_score': 0.8029, 'valid_scores': [0.7985, 0.787, 0.8233], 'train_scores': [0.9387, 0.9199, 0.9105], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 500, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.1, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+18.74 sec -- {'mean_score': 0.7944, 'valid_scores': [0.7925, 0.7691, 0.8217], 'train_scores': [0.9111, 0.8936, 0.8858], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.02, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+18.35 sec -- {'mean_score': 0.7997, 'valid_scores': [0.7992, 0.7802, 0.8197], 'train_scores': [0.9209, 0.9053, 0.8975], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+21.94 sec -- {'mean_score': 0.7983, 'valid_scores': [0.7948, 0.7843, 0.8159], 'train_scores': [0.9598, 0.9411, 0.93], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 600, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+13.23 sec -- {'mean_score': 0.7989, 'valid_scores': [0.7926, 0.7835, 0.8206], 'train_scores': [0.9428, 0.924, 0.9145], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 300, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.2, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+14.53 sec -- {'mean_score': 0.7933, 'valid_scores': [0.7925, 0.7662, 0.8211], 'train_scores': [0.9068, 0.8853, 0.8817], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 300, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.02, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+19.14 sec -- {'mean_score': 0.8006, 'valid_scores': [0.7997, 0.7828, 0.8192], 'train_scores': [0.9248, 0.908, 0.9007], 'params': {'subsample': 0.8, 'reg_lambda': 1, 'reg_alpha': 0, 'n_estimators': 500, 'min_child_weight': 1, 'max_depth': 5, 'learning_rate': 0.05, 'gamma': 0, 'colsample_bytree': 0.8}}
+
+mean_score: [
+    {
+        "mean_score": 0.8037,
+        "valid_scores": [
+            0.8013,
+            0.7874,
+            0.8225
+        ],
+        "train_scores": [
+            0.9426,
+            0.9242,
+            0.9147
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8029,
+        "valid_scores": [
+            0.7985,
+            0.787,
+            0.8233
+        ],
+        "train_scores": [
+            0.9387,
+            0.9199,
+            0.9105
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8028,
+        "valid_scores": [
+            0.7992,
+            0.7878,
+            0.8215
+        ],
+        "train_scores": [
+            0.9456,
+            0.9277,
+            0.9176
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8025,
+        "valid_scores": [
+            0.7986,
+            0.785,
+            0.8239
+        ],
+        "train_scores": [
+            0.9344,
+            0.9162,
+            0.9072
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8016,
+        "valid_scores": [
+            0.797,
+            0.7852,
+            0.8226
+        ],
+        "train_scores": [
+            0.9284,
+            0.9112,
+            0.9036
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8006,
+        "valid_scores": [
+            0.7997,
+            0.7828,
+            0.8192
+        ],
+        "train_scores": [
+            0.9248,
+            0.908,
+            0.9007
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7919,
+            0.7868,
+            0.8225
+        ],
+        "train_scores": [
+            0.9489,
+            0.9302,
+            0.92
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7998,
+            0.7819,
+            0.8196
+        ],
+        "train_scores": [
+            0.9306,
+            0.9136,
+            0.9052
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7996,
+            0.7816,
+            0.818
+        ],
+        "train_scores": [
+            0.9275,
+            0.9113,
+            0.9034
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7992,
+            0.7802,
+            0.8197
+        ],
+        "train_scores": [
+            0.9209,
+            0.9053,
+            0.8975
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7989,
+        "valid_scores": [
+            0.7926,
+            0.7835,
+            0.8206
+        ],
+        "train_scores": [
+            0.9428,
+            0.924,
+            0.9145
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7984,
+        "valid_scores": [
+            0.7949,
+            0.7827,
+            0.8177
+        ],
+        "train_scores": [
+            0.9552,
+            0.9359,
+            0.9256
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7983,
+        "valid_scores": [
+            0.7948,
+            0.7843,
+            0.8159
+        ],
+        "train_scores": [
+            0.9598,
+            0.9411,
+            0.93
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7982,
+        "valid_scores": [
+            0.7964,
+            0.7783,
+            0.8199
+        ],
+        "train_scores": [
+            0.9163,
+            0.9022,
+            0.8933
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7973,
+        "valid_scores": [
+            0.7956,
+            0.7743,
+            0.8221
+        ],
+        "train_scores": [
+            0.9153,
+            0.9008,
+            0.891
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7969,
+        "valid_scores": [
+            0.7943,
+            0.7756,
+            0.8209
+        ],
+        "train_scores": [
+            0.917,
+            0.9021,
+            0.8934
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7968,
+        "valid_scores": [
+            0.7929,
+            0.7835,
+            0.814
+        ],
+        "train_scores": [
+            0.9627,
+            0.9454,
+            0.9342
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7963,
+        "valid_scores": [
+            0.7945,
+            0.7726,
+            0.8219
+        ],
+        "train_scores": [
+            0.9134,
+            0.8979,
+            0.8892
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7944,
+        "valid_scores": [
+            0.7925,
+            0.7691,
+            0.8217
+        ],
+        "train_scores": [
+            0.9111,
+            0.8936,
+            0.8858
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7933,
+        "valid_scores": [
+            0.7925,
+            0.7662,
+            0.8211
+        ],
+        "train_scores": [
+            0.9068,
+            0.8853,
+            0.8817
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split2_score: [
+    {
+        "mean_score": 0.8037,
+        "valid_scores": [
+            0.8013,
+            0.7874,
+            0.8225
+        ],
+        "train_scores": [
+            0.9426,
+            0.9242,
+            0.9147
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7998,
+            0.7819,
+            0.8196
+        ],
+        "train_scores": [
+            0.9306,
+            0.9136,
+            0.9052
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8006,
+        "valid_scores": [
+            0.7997,
+            0.7828,
+            0.8192
+        ],
+        "train_scores": [
+            0.9248,
+            0.908,
+            0.9007
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7996,
+            0.7816,
+            0.818
+        ],
+        "train_scores": [
+            0.9275,
+            0.9113,
+            0.9034
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8028,
+        "valid_scores": [
+            0.7992,
+            0.7878,
+            0.8215
+        ],
+        "train_scores": [
+            0.9456,
+            0.9277,
+            0.9176
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7992,
+            0.7802,
+            0.8197
+        ],
+        "train_scores": [
+            0.9209,
+            0.9053,
+            0.8975
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8025,
+        "valid_scores": [
+            0.7986,
+            0.785,
+            0.8239
+        ],
+        "train_scores": [
+            0.9344,
+            0.9162,
+            0.9072
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8029,
+        "valid_scores": [
+            0.7985,
+            0.787,
+            0.8233
+        ],
+        "train_scores": [
+            0.9387,
+            0.9199,
+            0.9105
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8016,
+        "valid_scores": [
+            0.797,
+            0.7852,
+            0.8226
+        ],
+        "train_scores": [
+            0.9284,
+            0.9112,
+            0.9036
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7982,
+        "valid_scores": [
+            0.7964,
+            0.7783,
+            0.8199
+        ],
+        "train_scores": [
+            0.9163,
+            0.9022,
+            0.8933
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7973,
+        "valid_scores": [
+            0.7956,
+            0.7743,
+            0.8221
+        ],
+        "train_scores": [
+            0.9153,
+            0.9008,
+            0.891
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7984,
+        "valid_scores": [
+            0.7949,
+            0.7827,
+            0.8177
+        ],
+        "train_scores": [
+            0.9552,
+            0.9359,
+            0.9256
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7983,
+        "valid_scores": [
+            0.7948,
+            0.7843,
+            0.8159
+        ],
+        "train_scores": [
+            0.9598,
+            0.9411,
+            0.93
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7963,
+        "valid_scores": [
+            0.7945,
+            0.7726,
+            0.8219
+        ],
+        "train_scores": [
+            0.9134,
+            0.8979,
+            0.8892
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7969,
+        "valid_scores": [
+            0.7943,
+            0.7756,
+            0.8209
+        ],
+        "train_scores": [
+            0.917,
+            0.9021,
+            0.8934
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7968,
+        "valid_scores": [
+            0.7929,
+            0.7835,
+            0.814
+        ],
+        "train_scores": [
+            0.9627,
+            0.9454,
+            0.9342
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7989,
+        "valid_scores": [
+            0.7926,
+            0.7835,
+            0.8206
+        ],
+        "train_scores": [
+            0.9428,
+            0.924,
+            0.9145
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7944,
+        "valid_scores": [
+            0.7925,
+            0.7691,
+            0.8217
+        ],
+        "train_scores": [
+            0.9111,
+            0.8936,
+            0.8858
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7933,
+        "valid_scores": [
+            0.7925,
+            0.7662,
+            0.8211
+        ],
+        "train_scores": [
+            0.9068,
+            0.8853,
+            0.8817
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7919,
+            0.7868,
+            0.8225
+        ],
+        "train_scores": [
+            0.9489,
+            0.9302,
+            0.92
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split3_score: [
+    {
+        "mean_score": 0.8028,
+        "valid_scores": [
+            0.7992,
+            0.7878,
+            0.8215
+        ],
+        "train_scores": [
+            0.9456,
+            0.9277,
+            0.9176
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8037,
+        "valid_scores": [
+            0.8013,
+            0.7874,
+            0.8225
+        ],
+        "train_scores": [
+            0.9426,
+            0.9242,
+            0.9147
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8029,
+        "valid_scores": [
+            0.7985,
+            0.787,
+            0.8233
+        ],
+        "train_scores": [
+            0.9387,
+            0.9199,
+            0.9105
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7919,
+            0.7868,
+            0.8225
+        ],
+        "train_scores": [
+            0.9489,
+            0.9302,
+            0.92
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8016,
+        "valid_scores": [
+            0.797,
+            0.7852,
+            0.8226
+        ],
+        "train_scores": [
+            0.9284,
+            0.9112,
+            0.9036
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8025,
+        "valid_scores": [
+            0.7986,
+            0.785,
+            0.8239
+        ],
+        "train_scores": [
+            0.9344,
+            0.9162,
+            0.9072
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7983,
+        "valid_scores": [
+            0.7948,
+            0.7843,
+            0.8159
+        ],
+        "train_scores": [
+            0.9598,
+            0.9411,
+            0.93
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7968,
+        "valid_scores": [
+            0.7929,
+            0.7835,
+            0.814
+        ],
+        "train_scores": [
+            0.9627,
+            0.9454,
+            0.9342
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7989,
+        "valid_scores": [
+            0.7926,
+            0.7835,
+            0.8206
+        ],
+        "train_scores": [
+            0.9428,
+            0.924,
+            0.9145
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8006,
+        "valid_scores": [
+            0.7997,
+            0.7828,
+            0.8192
+        ],
+        "train_scores": [
+            0.9248,
+            0.908,
+            0.9007
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7984,
+        "valid_scores": [
+            0.7949,
+            0.7827,
+            0.8177
+        ],
+        "train_scores": [
+            0.9552,
+            0.9359,
+            0.9256
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7998,
+            0.7819,
+            0.8196
+        ],
+        "train_scores": [
+            0.9306,
+            0.9136,
+            0.9052
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7996,
+            0.7816,
+            0.818
+        ],
+        "train_scores": [
+            0.9275,
+            0.9113,
+            0.9034
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7992,
+            0.7802,
+            0.8197
+        ],
+        "train_scores": [
+            0.9209,
+            0.9053,
+            0.8975
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7982,
+        "valid_scores": [
+            0.7964,
+            0.7783,
+            0.8199
+        ],
+        "train_scores": [
+            0.9163,
+            0.9022,
+            0.8933
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7969,
+        "valid_scores": [
+            0.7943,
+            0.7756,
+            0.8209
+        ],
+        "train_scores": [
+            0.917,
+            0.9021,
+            0.8934
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7973,
+        "valid_scores": [
+            0.7956,
+            0.7743,
+            0.8221
+        ],
+        "train_scores": [
+            0.9153,
+            0.9008,
+            0.891
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7963,
+        "valid_scores": [
+            0.7945,
+            0.7726,
+            0.8219
+        ],
+        "train_scores": [
+            0.9134,
+            0.8979,
+            0.8892
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7944,
+        "valid_scores": [
+            0.7925,
+            0.7691,
+            0.8217
+        ],
+        "train_scores": [
+            0.9111,
+            0.8936,
+            0.8858
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7933,
+        "valid_scores": [
+            0.7925,
+            0.7662,
+            0.8211
+        ],
+        "train_scores": [
+            0.9068,
+            0.8853,
+            0.8817
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+split4_score: [
+    {
+        "mean_score": 0.8025,
+        "valid_scores": [
+            0.7986,
+            0.785,
+            0.8239
+        ],
+        "train_scores": [
+            0.9344,
+            0.9162,
+            0.9072
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8029,
+        "valid_scores": [
+            0.7985,
+            0.787,
+            0.8233
+        ],
+        "train_scores": [
+            0.9387,
+            0.9199,
+            0.9105
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8016,
+        "valid_scores": [
+            0.797,
+            0.7852,
+            0.8226
+        ],
+        "train_scores": [
+            0.9284,
+            0.9112,
+            0.9036
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7919,
+            0.7868,
+            0.8225
+        ],
+        "train_scores": [
+            0.9489,
+            0.9302,
+            0.92
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8037,
+        "valid_scores": [
+            0.8013,
+            0.7874,
+            0.8225
+        ],
+        "train_scores": [
+            0.9426,
+            0.9242,
+            0.9147
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7973,
+        "valid_scores": [
+            0.7956,
+            0.7743,
+            0.8221
+        ],
+        "train_scores": [
+            0.9153,
+            0.9008,
+            0.891
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7963,
+        "valid_scores": [
+            0.7945,
+            0.7726,
+            0.8219
+        ],
+        "train_scores": [
+            0.9134,
+            0.8979,
+            0.8892
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7944,
+        "valid_scores": [
+            0.7925,
+            0.7691,
+            0.8217
+        ],
+        "train_scores": [
+            0.9111,
+            0.8936,
+            0.8858
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8028,
+        "valid_scores": [
+            0.7992,
+            0.7878,
+            0.8215
+        ],
+        "train_scores": [
+            0.9456,
+            0.9277,
+            0.9176
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.1,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7933,
+        "valid_scores": [
+            0.7925,
+            0.7662,
+            0.8211
+        ],
+        "train_scores": [
+            0.9068,
+            0.8853,
+            0.8817
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7969,
+        "valid_scores": [
+            0.7943,
+            0.7756,
+            0.8209
+        ],
+        "train_scores": [
+            0.917,
+            0.9021,
+            0.8934
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.02,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7989,
+        "valid_scores": [
+            0.7926,
+            0.7835,
+            0.8206
+        ],
+        "train_scores": [
+            0.9428,
+            0.924,
+            0.9145
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7982,
+        "valid_scores": [
+            0.7964,
+            0.7783,
+            0.8199
+        ],
+        "train_scores": [
+            0.9163,
+            0.9022,
+            0.8933
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 300,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7992,
+            0.7802,
+            0.8197
+        ],
+        "train_scores": [
+            0.9209,
+            0.9053,
+            0.8975
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 400,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8004,
+        "valid_scores": [
+            0.7998,
+            0.7819,
+            0.8196
+        ],
+        "train_scores": [
+            0.9306,
+            0.9136,
+            0.9052
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.8006,
+        "valid_scores": [
+            0.7997,
+            0.7828,
+            0.8192
+        ],
+        "train_scores": [
+            0.9248,
+            0.908,
+            0.9007
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7997,
+        "valid_scores": [
+            0.7996,
+            0.7816,
+            0.818
+        ],
+        "train_scores": [
+            0.9275,
+            0.9113,
+            0.9034
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.05,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7984,
+        "valid_scores": [
+            0.7949,
+            0.7827,
+            0.8177
+        ],
+        "train_scores": [
+            0.9552,
+            0.9359,
+            0.9256
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 500,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7983,
+        "valid_scores": [
+            0.7948,
+            0.7843,
+            0.8159
+        ],
+        "train_scores": [
+            0.9598,
+            0.9411,
+            0.93
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 600,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    },
+    {
+        "mean_score": 0.7968,
+        "valid_scores": [
+            0.7929,
+            0.7835,
+            0.814
+        ],
+        "train_scores": [
+            0.9627,
+            0.9454,
+            0.9342
+        ],
+        "params": {
+            "subsample": 0.8,
+            "reg_lambda": 1,
+            "reg_alpha": 0,
+            "n_estimators": 700,
+            "min_child_weight": 1,
+            "max_depth": 5,
+            "learning_rate": 0.2,
+            "gamma": 0,
+            "colsample_bytree": 0.8
+        }
+    }
+]
+
+

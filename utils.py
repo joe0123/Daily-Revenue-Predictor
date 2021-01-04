@@ -13,64 +13,92 @@ from sklearn.model_selection._split import _BaseKFold
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import get_scorer
 
-def weighted(base, weight_ratio):
-    class WeightedEstimator(base):
-        def fit(self, X, y, focus, weight_ratio=weight_ratio):
-            return super(base, self).fit(X, y, sample_weight=np.where(focus, weight_ratio, 1))
-    
-    return WeightedEstimator
-
-def _single_cv(params, x, y, groups, model, cv, scoring):
+def single_cv(params, x, y, groups, model, cv, scoring, weight_ratio, fit_params=dict()):
     start_time = time.time()
-    train_errs = []
-    valid_errs = []
+    train_scores = []
+    valid_scores = []
     model.set_params(**params)
     for train_i, (train_gi, train_gn), valid_i, (valid_gi, valid_gn) in cv:
         train_x, train_y = x[train_i], y[train_i]
         valid_x, valid_y = x[valid_i], y[valid_i]
-        if "WeightedEstimator" == type(model).__name__:
-            focus_months = set([int(n.split('-')[1]) for n in valid_gn])
-            focus = [int(groups[i].split('-')[1]) in focus_months for i in train_i]
-            model.fit(train_x, train_y, focus)
-        else:
-            model = model.fit(train_x, train_y)
+        
+        focus = find_focus(groups[train_i], valid_gn)
+        if "early_stopping_rounds" in fit_params: # for xgboost and lightgbm
+            fit_params["eval_set"] = [(valid_x, valid_y)]
+        model = model.fit(train_x, train_y, sample_weight=np.where(focus, weight_ratio, 1), **fit_params)
         
         scorer = get_scorer(scoring)
-        train_err = scorer(model, train_x, train_y)
-        train_errs.append(np.around(train_err, decimals=4))
-        valid_err = scorer(model, valid_x, valid_y)
-        valid_errs.append(np.around(valid_err, decimals=4))
+        train_score = scorer(model, train_x, train_y)
+        train_scores.append(np.around(train_score, decimals=4))
+        valid_score = scorer(model, valid_x, valid_y)
+        valid_scores.append(np.around(valid_score, decimals=4))
 
     dur = np.around(time.time() - start_time, decimals=2)
-    result = {"mean_score": np.around(np.mean(valid_errs), decimals=4), \
-                "valid_scores": valid_errs, "train_scores": train_errs, "params": params}
+    result = {"mean_score": np.around(np.mean(valid_scores), decimals=4), \
+                "valid_scores": valid_scores, "train_scores": train_scores, "params": params}
     print("\n{} sec -- ".format(dur), result, sep='', flush=True)
     return result
 
-def single_search_cv(x, y, groups, model, params_grid, cv, scoring, n_iter=None, random_state=0, n_jobs=1):
+def single_search_cv(x, y, groups, model, params_grid, cv, scoring, weight_ratio=1, fit_params=dict(), \
+                    n_iter=None, random_state=0, n_jobs=1):
     params_grid = shuffle(ParameterGrid(params_grid), random_state=random_state, n_samples=n_iter)
     cv_result = [i for i in cv]
-    single_cv = partial(_single_cv, x=x, y=y, groups=groups, model=model, cv=cv_result, scoring=scoring)
-    record = Parallel(n_jobs=n_jobs)(delayed(single_cv)(params) for params in params_grid)
+    single_cv_ = partial(single_cv, x=x, y=y, groups=groups, model=model, cv=cv_result, \
+                            scoring=scoring, weight_ratio=weight_ratio, fit_params=fit_params)
+    results = Parallel(n_jobs=n_jobs)(delayed(single_cv_)(params) for params in params_grid)
     
-    return record
+    return results
+
+def comb_cv(adr_x, adr_y, cancel_x, cancel_y, groups, total_nights, labels, model, cv, weight_ratio):
+    train_scores = []
+    valid_scores = []
+    for train_i, (train_gi, train_gn), valid_i, (valid_gi, valid_gn) in cv:
+        train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
+        valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
+        train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
+        valid_cancel_x, _ = cancel_x[valid_i], cancel_y[valid_i]
+
+        focus = find_focus(groups[train_i], valid_gn)
+        model = model.fit((train_adr_x, train_cancel_x), (train_adr_y, train_cancel_y), \
+                            sample_weight=np.where(focus, weight_ratio, 1))
+
+        train_score = model.score((train_adr_x, train_cancel_x), labels[train_gi], total_nights[train_i], groups[train_i])
+        train_scores.append(train_score)
+        valid_score = model.score((valid_adr_x, valid_cancel_x), labels[valid_gi], total_nights[valid_i], groups[valid_i])
+        valid_scores.append(valid_score)
+    result = {"mean_score": np.around(np.mean(valid_scores), decimals=4), \
+                "valid_scores": valid_scores, "train_scores": train_scores}
+    print('\n', result, sep='', flush=True)
+    return result
+
+
+def find_focus(groups, target_gn):
+    focus_months = set([int(n.split('-')[1]) for n in target_gn])
+    focus = [int(g.split('-')[1]) in focus_months for g in groups]
+    #focus_time_ = [n.split('-')[:2] for n in target_gn]
+    #focus_time = set([(str(int(i[0]) - 1), i[1]) for i in focus_time_])
+    #focus = [tuple(g.split('-')[:2]) in focus_time for g in groups]
+    return focus
 
 class DailyRevenueEstimator(BaseEstimator):
     def __init__(self, adr_model, cancel_model):
         self.adr_model = adr_model
         self.cancel_model = cancel_model
 
-    def fit(self, adr_x, adr_y, cancel_x, cancel_y):
-        self.adr_model = self.adr_model.fit(adr_x, adr_y)
-        self.cancel_model = self.cancel_model.fit(cancel_x, cancel_y)
+    def fit(self, x, y, sample_weight=None):
+        adr_x, cancel_x = x
+        adr_y, cancel_y = y
+        self.adr_model = self.adr_model.fit(adr_x, adr_y, sample_weight=sample_weight)
+        self.cancel_model = self.cancel_model.fit(cancel_x, cancel_y, sample_weight=sample_weight)
         return self
 
-    def predict(self, adr_x, cancel_x, total_nights, groups):
+    def predict(self, x, total_nights, groups):
+        adr_x, cancel_x = x
         result = predict_daily_revenue(self.adr_model, self.cancel_model, adr_x, cancel_x, total_nights, groups)
         return result
 
-    def score(self, adr_x, cancel_x, y, total_nights, groups):
-        result = self.predict(adr_x, cancel_x, total_nights, groups)
+    def score(self, x, y, total_nights, groups):
+        result = self.predict(x, total_nights, groups)
         err = np.mean(np.abs(result - y))
         return err
 

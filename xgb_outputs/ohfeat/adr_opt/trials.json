@@ -1,0 +1,26 @@
+[
+    {
+        "score": -21.0575,
+        "params": {
+            "learning_rate": 0.1142745657461917,
+            "min_child_weight": 1,
+            "max_depth": 4,
+            "subsample": 0.9289728088113784,
+            "colsample_bytree": 0.8930762171488877,
+            "reg_lambda": 0.031207198770106425,
+            "reg_alpha": 0.0034476790445206584
+        }
+    },
+    {
+        "score": -26.2277,
+        "params": {
+            "learning_rate": 0.06653157524344973,
+            "min_child_weight": 13,
+            "max_depth": 2,
+            "subsample": 0.8958625190413323,
+            "colsample_bytree": 0.6702264438270331,
+            "reg_lambda": 0.018714500686240674,
+            "reg_alpha": 0.503948959867121
+        }
+    }
+]

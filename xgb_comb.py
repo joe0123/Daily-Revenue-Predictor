@@ -9,14 +9,18 @@ from utils import *
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '3'
 
-MODEL_ADR = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
-                        n_estimators=100, learning_rate=0.1, min_child_weight=12, max_depth=7, gamma=2, \
-                        subsample=0.7, colsample_bytree=0.6, reg_lambda=1, reg_alpha=0.01)
+model_adr = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
+                        n_estimators=200, learning_rate=1e-1, min_child_weight=5, max_depth=5, gamma=0, \
+                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=0)
 
-MODEL_CANCEL = XGBClassifier(objective="binary:logistic", eval_metric="error", \
+model_cancel = XGBClassifier(objective="binary:logistic", eval_metric="error", \
                             tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
-                            n_estimators=100, learning_rate=0.1, min_child_weight=10, max_depth=3, gamma=1, \
-                            subsample=0.7, colsample_bytree=0.9, reg_lambda=10, reg_alpha=1e-1)
+                            n_estimators=300, learning_rate=0.2, min_child_weight=2, max_depth=2, gamma=12, \
+                            subsample=0.8, colsample_bytree=0.8, reg_lambda=0.01, reg_alpha=1)
+    
+model = DailyRevenueEstimator(model_adr, model_cancel)
+
+weight_ratio = 1
 
 if __name__ == "__main__":
 # Initialization
@@ -31,32 +35,20 @@ if __name__ == "__main__":
     test_groups = np.array(dataset.get_groups("test"))
     test_total_nights = np.array(dataset.get_stay_nights("test"))
     
-    model = DailyRevenueEstimator(MODEL_ADR, MODEL_CANCEL)
-    
-    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2])
     cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5))
 
 # Start CV
-    errs = []
-    for train_i, (train_gi, _), valid_i, (valid_gi, _) in tqdm(cv):
-        train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
-        valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
-        train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
-        valid_cancel_x, _ = cancel_x[valid_i], cancel_y[valid_i]
-        valid_labels = labels[valid_gi]
-
-        model = model.fit(train_adr_x, train_adr_y, train_cancel_x, train_cancel_y)
-
-        err = model.score(valid_adr_x, valid_cancel_x, valid_labels, total_nights[valid_i], groups[valid_i])
-        errs.append(err)
-    
-    print("Errors: {:.2f} {}".format(np.mean(errs), errs), flush=True)
+    result = comb_cv(adr_x, adr_y, cancel_x, cancel_y, groups, total_nights, labels, model, cv, weight_ratio)    
 
 # Start re-training
-    model = model.fit(adr_x, adr_y, cancel_x, cancel_y)
+    if weight_ratio != 1:
+        focus = find_focus(groups, test_groups)
+        model = model.fit((adr_x, cancel_x), (adr_y, cancel_y), sample_weight=np.where(focus, weight_ratio, 1))
+    else:
+        model = model.fit((adr_x, cancel_x), (adr_y, cancel_y))
 
 # Start testing and Write the result file
-    result = model.predict(test_adr_x, test_cancel_x, test_total_nights, test_groups)
+    result = model.predict((test_adr_x, test_cancel_x), test_total_nights, test_groups)
     df = dataset.test_nolabel_df
     df["label"] = result
     df.to_csv("result.csv", index=False)
