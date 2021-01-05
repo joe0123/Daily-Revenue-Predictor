@@ -13,19 +13,18 @@ from sklearn.model_selection._split import _BaseKFold
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.metrics import get_scorer
 
-def single_cv(params, x, y, groups, model, cv, scoring, weight_ratio, fit_params=dict()):
+def single_cv(params, x, y, model, cv, scoring, fit_params=dict()):
     start_time = time.time()
     train_scores = []
     valid_scores = []
     model.set_params(**params)
-    for train_i, (train_gi, train_gn), valid_i, (valid_gi, valid_gn) in cv:
+    for train_i, valid_i in cv:
         train_x, train_y = x[train_i], y[train_i]
         valid_x, valid_y = x[valid_i], y[valid_i]
         
-        focus = find_focus(groups[train_i], valid_gn)
         if "early_stopping_rounds" in fit_params: # for xgboost and lightgbm
             fit_params["eval_set"] = [(valid_x, valid_y)]
-        model = model.fit(train_x, train_y, sample_weight=np.where(focus, weight_ratio, 1), **fit_params)
+        model = model.fit(train_x, train_y, **fit_params)
         
         scorer = get_scorer(scoring)
         train_score = scorer(model, train_x, train_y)
@@ -39,46 +38,39 @@ def single_cv(params, x, y, groups, model, cv, scoring, weight_ratio, fit_params
     print("\n{} sec -- ".format(dur), result, sep='', flush=True)
     return result
 
-def single_search_cv(x, y, groups, model, params_grid, cv, scoring, weight_ratio=1, fit_params=dict(), \
+def single_search_cv(x, y, model, params_grid, cv, scoring, weight_ratio=1, fit_params=dict(), \
                     n_iter=None, random_state=0, n_jobs=1):
     params_grid = shuffle(ParameterGrid(params_grid), random_state=random_state, n_samples=n_iter)
     cv_result = [i for i in cv]
-    single_cv_ = partial(single_cv, x=x, y=y, groups=groups, model=model, cv=cv_result, \
+    single_cv_ = partial(single_cv, x=x, y=y, model=model, cv=cv_result, \
                             scoring=scoring, weight_ratio=weight_ratio, fit_params=fit_params)
     results = Parallel(n_jobs=n_jobs)(delayed(single_cv_)(params) for params in params_grid)
     
     return results
 
-def comb_cv(adr_x, adr_y, cancel_x, cancel_y, groups, total_nights, labels, model, cv, weight_ratio):
+def comb_cv(x, y, groups, total_nights, labels_df, model, cv):
+    adr_x, cancel_x = x
+    adr_y, cancel_y = y
     train_scores = []
     valid_scores = []
-    for train_i, (train_gi, train_gn), valid_i, (valid_gi, valid_gn) in cv:
+    for train_i, valid_i in cv:
         train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
         valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
         train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
         valid_cancel_x, _ = cancel_x[valid_i], cancel_y[valid_i]
 
-        focus = find_focus(groups[train_i], valid_gn)
-        model = model.fit((train_adr_x, train_cancel_x), (train_adr_y, train_cancel_y), \
-                            sample_weight=np.where(focus, weight_ratio, 1))
+        model = model.fit((train_adr_x, train_cancel_x), (train_adr_y, train_cancel_y))
 
-        train_score = model.score((train_adr_x, train_cancel_x), labels[train_gi], total_nights[train_i], groups[train_i])
+        train_score = model.score((train_adr_x, train_cancel_x), total_nights[train_i], groups[train_i], labels_df)
         train_scores.append(train_score)
-        valid_score = model.score((valid_adr_x, valid_cancel_x), labels[valid_gi], total_nights[valid_i], groups[valid_i])
+        valid_score = model.score((valid_adr_x, valid_cancel_x), total_nights[valid_i], groups[valid_i], labels_df)
         valid_scores.append(valid_score)
+    
     result = {"mean_score": np.around(np.mean(valid_scores), decimals=4), \
                 "valid_scores": valid_scores, "train_scores": train_scores}
     print('\n', result, sep='', flush=True)
     return result
 
-
-def find_focus(groups, target_gn):
-    focus_months = set([int(n.split('-')[1]) for n in target_gn])
-    focus = [int(g.split('-')[1]) in focus_months for g in groups]
-    #focus_time_ = [n.split('-')[:2] for n in target_gn]
-    #focus_time = set([(str(int(i[0]) - 1), i[1]) for i in focus_time_])
-    #focus = [tuple(g.split('-')[:2]) in focus_time for g in groups]
-    return focus
 
 class DailyRevenueEstimator(BaseEstimator):
     def __init__(self, adr_model, cancel_model):
@@ -94,12 +86,15 @@ class DailyRevenueEstimator(BaseEstimator):
 
     def predict(self, x, total_nights, groups):
         adr_x, cancel_x = x
-        result = predict_daily_revenue(self.adr_model, self.cancel_model, adr_x, cancel_x, total_nights, groups)
-        return result
+        result_df = predict_daily_revenue(self.adr_model, self.cancel_model, adr_x, cancel_x, total_nights, groups)
+        return result_df
 
-    def score(self, x, y, total_nights, groups):
-        result = self.predict(x, total_nights, groups)
-        err = np.mean(np.abs(result - y))
+    def score(self, x, total_nights, groups, labels_df):
+        labels = dict(labels_df.values)
+        result_df = self.predict(x, total_nights, groups)
+        pred_labels = result_df["label"].to_numpy()
+        true_labels = result_df["arrival_date"].map(labels).to_numpy()
+        err = np.mean(np.abs(pred_labels - true_labels))
         return err
 
     def set_params(self, params):
@@ -112,6 +107,23 @@ class DailyRevenueEstimator(BaseEstimator):
                 print("Invalid parameter case!")
                 exit()
 
+def sliding_monthly_split(X, split_groups, start_group, group_window, step=1, soft=True):
+    X, split_groups = indexable(X, split_groups)
+    n_samples = len(X)
+    indices = np.arange(n_samples)
+    group_names, group_counts = np.unique(split_groups, return_counts=True)
+    group_ids = np.split(indices, np.cumsum(group_counts)[:-1])
+    n_groups = len(group_ids)
+    test_start = np.where(group_names == start_group)[0][0]
+    test_starts = np.arange(test_start, n_groups, step)
+    for test_start in test_starts:
+        test_end = test_start + group_window
+        if soft or (not soft and test_end <= n_groups):
+            test_end = np.clip(test_end, 0, n_groups)
+            train_gi = np.arange(0, test_start)
+            test_gi = np.arange(test_start, test_end)
+            yield (np.concatenate(group_ids[train_gi[0]: train_gi[-1] + 1]),
+                    np.concatenate(group_ids[test_gi[0]: test_gi[-1] + 1]))
 
 class GroupTimeSeriesSplit(_BaseKFold):
     """
@@ -170,20 +182,13 @@ class GroupTimeSeriesSplit(_BaseKFold):
             train_gi = np.arange(0, test_start)
             test_gi = np.arange(test_start, test_start + test_size)
             yield (np.concatenate(group_ids[train_gi[0]: train_gi[-1] + 1]),
-                    (train_gi, group_names[train_gi]),
-                    np.concatenate(group_ids[test_gi[0]: test_gi[-1] + 1]),
-                    (test_gi, group_names[test_gi]))
-
-
-def group_sum(a, groups):
-    assert len(a) == len(groups)
-    a = pd.DataFrame({"arr": a, "group": groups})
-    return a.groupby("group").sum()["arr"].tolist()
+                    np.concatenate(group_ids[test_gi[0]: test_gi[-1] + 1]))
 
 def predict_daily_revenue(model_adr, model_cancel, adr_x, cancel_x, total_nights, groups):
     pred_adr = model_adr.predict(adr_x) 
     pred_cancel = model_cancel.predict(cancel_x)
     #pred_cancel = model_cancel.predict_proba(cancel_x)[:, 1]
-    result = group_sum(pred_adr * (1 - pred_cancel) * total_nights, groups)
-    result = np.array([np.clip(i // 10000, 0, 9) for i in result])
-    return result
+    result_df = pd.DataFrame({"arrival_date": groups, "label": pred_adr * (1 - pred_cancel) * total_nights})
+    result_df = result_df.groupby("arrival_date", as_index=False).agg({"label": "sum"})
+    result_df["label"] = result_df["label"].apply(lambda i: np.clip(i // 10000, 0, 9))
+    return result_df

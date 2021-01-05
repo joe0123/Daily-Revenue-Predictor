@@ -3,13 +3,13 @@ import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 
 class Dataset:
-    def __init__(self, data_dir, drop_cols=["ID", "arrival_date_year", "company"], dur=None):
+    def __init__(self, data_dir, drop_cols=["ID", "company"], dur=None):
         self.data_dir = data_dir
         self.load_df()
-        self.create_groups()
         if dur:
             self.cut_df(dur)
         self.create_feats(drop_cols)
+        self.create_groups()
 
     def load_df(self):
         self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train.csv"))
@@ -18,19 +18,16 @@ class Dataset:
         self.test_nolabel_df = pd.read_csv(os.path.join(self.data_dir, "test_nolabel.csv"))
     
     def _build_date_group(self, df):
-        month_int = dict(zip(["January", "February", "March", "April", "May", "June", "July", "August", \
-                "September", "October", "November", "December"], ["{:02d}".format(i) for i in range(1, 13)]))
         date_group = df["arrival_date_year"].astype("str").str.cat(  \
-                    [df["arrival_date_month"].apply(month_int.get), 
+                    [df["arrival_date_month"].apply(lambda i: "{:02d}".format(i)), 
                     df["arrival_date_day_of_month"].apply(lambda i: "{:02d}".format(i))], sep='-').tolist()
         assert all(date_group[i] <= date_group[i + 1] for i in range(len(date_group) - 1))
         
         return date_group
 
     def create_groups(self):
-        self.train_group = self._build_date_group(self.train_raw_df)
-        self.test_group = self._build_date_group(self.test_raw_df)
-
+        self.train_group = self._build_date_group(self.train_feat_df)
+        self.test_group = self._build_date_group(self.test_feat_df)
 
     def _is_fit_date(self, date_df, dur):
         date_df = pd.to_datetime(date_df)
@@ -46,6 +43,10 @@ class Dataset:
     def _build_feats(self, df, drop_cols):
         df = df[self.test_raw_df.columns]
         df = df.drop(columns=drop_cols, errors="ignore")
+        if "arrival_date_month" in df:
+            month_int = dict(zip(["January", "February", "March", "April", "May", "June", "July", "August", \
+                "September", "October", "November", "December"], range(1, 13)))
+            df["arrival_date_month"] = df["arrival_date_month"].apply(month_int.get)
         if "agent" in df:
             df["agent"] = df["agent"].fillna(value=0)
             df["agent"] = df["agent"].astype("object")
@@ -63,7 +64,6 @@ class Dataset:
         test_df = test_df.reindex(feat_cols, fill_value=0, axis=1)
         
         return train_df, test_df, feat_cols
-
 
     def create_feats(self, drop_cols):
         train_feat_df, train_ohfeat_df = self._build_feats(self.train_raw_df, drop_cols)
