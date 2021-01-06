@@ -8,18 +8,26 @@ from sklearn.ensemble import VotingRegressor, VotingClassifier
 from dataset import Dataset
 from utils import *
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '2'
+os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
-with open("xgb_outputs/ohfeat/adr_opt_s/trials_0.json", 'r') as f:
-    all_adr_params = [item["params"] for item in json.load(f)[:10]]
-adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
-                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
+#with open("xgb_outputs/ohfeat/adr_opt_s/trials_soft_0.json", 'r') as f:
+#    all_adr_params = [item["params"] for item in json.load(f)[:10]]
+#adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
+#                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
 
-with open("xgb_outputs/ohfeat/cancel_opt_s/trials_0.json", 'r') as f:
-    all_cancel_params = [item["params"] for item in json.load(f)[:10]]
-cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
-                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
-                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
+#with open("xgb_outputs/ohfeat/cancel_opt_s/trials_soft_0.json", 'r') as f:
+#    all_cancel_params = [item["params"] for item in json.load(f)[:10]]
+#cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
+#                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
+#                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
+
+adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
+                        n_estimators=200, learning_rate=0.1, min_child_weight=8, max_depth=8, gamma=0, \
+                        subsample=0.7, colsample_bytree=0.8, reg_lambda=1, reg_alpha=1e-3)
+cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
+                            tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
+                            n_estimators=250, learning_rate=0.08, min_child_weight=8, max_depth=3, gamma=0, \
+                            subsample=0.7, colsample_bytree=0.8, reg_lambda=1, reg_alpha=1e-3)
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
@@ -38,17 +46,18 @@ if __name__ == "__main__":
     
     #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5))
     split_groups = ['-'.join(g.split('-')[:2]) for g in groups]
-    cv = sliding_monthly_split(adr_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=False)
+    cv = sliding_monthly_split(adr_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=True)
     cv_result = [i for i in cv]
 
-    #single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
-    #single_cv(x=cancel_x, y=cancel_y, model=cancel_model, params={}, cv=cv_result, scoring="accuracy")
+    single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
+    single_cv(x=cancel_x, y=cancel_y, model=cancel_model, params={}, cv=cv_result, scoring="accuracy")
+
 # Start CV 
     result = comb_cv((adr_x, cancel_x), (adr_y, cancel_y), groups, total_nights, labels_df, model, cv_result)
 
 # Start re-training
     model = model.fit((adr_x, cancel_x), (adr_y, cancel_y))
-
+    exit()
 # Start testing and Write the result file
     result = dict(model.predict((test_adr_x, test_cancel_x), test_total_nights, test_groups).values)
     df = dataset.test_nolabel_df

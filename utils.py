@@ -38,12 +38,12 @@ def single_cv(params, x, y, model, cv, scoring, fit_params=dict()):
     print("\n{} sec -- ".format(dur), result, sep='', flush=True)
     return result
 
-def single_search_cv(x, y, model, params_grid, cv, scoring, weight_ratio=1, fit_params=dict(), \
+def single_search_cv(x, y, model, params_grid, cv, scoring, fit_params=dict(), \
                     n_iter=None, random_state=0, n_jobs=1):
     params_grid = shuffle(ParameterGrid(params_grid), random_state=random_state, n_samples=n_iter)
     cv_result = [i for i in cv]
     single_cv_ = partial(single_cv, x=x, y=y, model=model, cv=cv_result, \
-                            scoring=scoring, weight_ratio=weight_ratio, fit_params=fit_params)
+                            scoring=scoring, fit_params=fit_params)
     results = Parallel(n_jobs=n_jobs)(delayed(single_cv_)(params) for params in params_grid)
     
     return results
