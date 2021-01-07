@@ -12,9 +12,9 @@ class Dataset:
         self.create_groups()
 
     def load_df(self):
-        self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train.csv"))
+        self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train_new.csv"))
         self.train_label_df = pd.read_csv(os.path.join(self.data_dir, "train_label.csv"))
-        self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test.csv"))
+        self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test_new.csv"))
         self.test_nolabel_df = pd.read_csv(os.path.join(self.data_dir, "test_nolabel.csv"))
     
     def _build_date_group(self, df):
@@ -55,7 +55,7 @@ class Dataset:
         if "country" in df:
             df["country"] = df["country"].fillna(value="others")
         
-        return df, pd.get_dummies(df)
+        return df
 
     def _align_feats(self, train_df, test_df):
         feat_cols = sorted(train_df.columns)
@@ -66,34 +66,71 @@ class Dataset:
         return train_df, test_df, feat_cols
 
     def create_feats(self, drop_cols):
-        train_feat_df, train_ohfeat_df = self._build_feats(self.train_raw_df, drop_cols)
-        test_feat_df, test_ohfeat_df = self._build_feats(self.test_raw_df, drop_cols)
+        train_feat_df = self._build_feats(self.train_raw_df, drop_cols)
+        test_feat_df = self._build_feats(self.test_raw_df, drop_cols)
         self.train_feat_df, self.test_feat_df, self.feat_cols = self._align_feats(train_feat_df, test_feat_df)
-        self.train_ohfeat_df, self.test_ohfeat_df, self.ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
 
-        encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
-        for col in train_feat_df.select_dtypes(exclude="number").columns:
-            self.train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
-            self.test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
-
+        
     def get_adr_data(self, onehot_x=False):
         if onehot_x:
-            train_x = self.train_ohfeat_df
-            test_x = self.test_ohfeat_df
+            train_ohfeat_df = pd.get_dummies(self.train_feat_df)
+            test_ohfeat_df = pd.get_dummies(self.test_feat_df)
+            
+            drop_file = os.path.join(self.data_dir, "adr_drop.txt")
+            if os.path.exists(drop_file):
+                with open(drop_file, 'r') as f:
+                    drop_cols = [line.strip() for line in f.readlines()]
+                train_ohfeat_df = train_ohfeat_df.drop(columns=drop_cols, errors="ignore")
+                test_ohfeat_df = test_ohfeat_df.drop(columns=drop_cols, errors="ignore")
+            
+            train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
+            train_x = train_ohfeat_df
+            test_x = test_ohfeat_df
+        
         else:
-            train_x = self.train_feat_df
-            test_x = self.test_feat_df
+            train_feat_df = self.train_feat_df.copy()
+            test_feat_df = self.test_feat_df.copy()
+            
+            encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
+            for col in train_feat_df.select_dtypes(exclude="number").columns:
+                train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+                test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+            
+            train_x = train_feat_df
+            test_x = test_feat_df
+        
         train_y = self.train_raw_df["adr"]
         
         return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()
  
     def get_cancel_data(self, onehot_x=False):
         if onehot_x:
-            train_x = self.train_ohfeat_df
-            test_x = self.test_ohfeat_df
+            train_ohfeat_df = pd.get_dummies(self.train_feat_df)
+            test_ohfeat_df = pd.get_dummies(self.test_feat_df)
+            
+            drop_file = os.path.join(self.data_dir, "cancel_drop.txt")
+            if os.path.exists(drop_file):
+                with open(drop_file, 'r') as f:
+                    drop_cols = [line.strip() for line in f.readlines()]
+                train_ohfeat_df = train_ohfeat_df.drop(columns=drop_cols, errors="ignore")
+                test_ohfeat_df = test_ohfeat_df.drop(columns=drop_cols, errors="ignore")
+            
+            train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
+            train_x = train_ohfeat_df
+            test_x = test_ohfeat_df
+        
         else:
-            train_x = self.train_feat_df
-            test_x = self.test_feat_df
+            train_feat_df = self.train_feat_df.copy()
+            test_feat_df = self.test_feat_df.copy()
+            
+            encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
+            for col in train_feat_df.select_dtypes(exclude="number").columns:
+                train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+                test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+            
+            train_x = train_feat_df
+            test_x = test_feat_df
+        
         train_y = self.train_raw_df["is_canceled"]
         
         return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()

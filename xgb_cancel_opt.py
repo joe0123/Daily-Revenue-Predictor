@@ -14,7 +14,6 @@ def optuna_obj(trial, train_x, train_y, groups, splits):
     model = XGBClassifier(objective="binary:logistic", eval_metric="error", 
             tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
                         n_estimators=250, gamma=0)
-    weight_ratio = 1
     params = {
         "learning_rate": trial.suggest_float("learning_rate", 1e-2, 2e-1),
         "min_child_weight": trial.suggest_int("min_child_weight", 40, 80, 2),
