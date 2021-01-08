@@ -86,6 +86,7 @@ class Dataset:
             train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
             train_x = train_ohfeat_df
             test_x = test_ohfeat_df
+            feat_cols = ohfeat_cols
         
         else:
             train_feat_df = self.train_feat_df.copy()
@@ -98,10 +99,11 @@ class Dataset:
             
             train_x = train_feat_df
             test_x = test_feat_df
+            feat_cols = self.feat_cols
         
         train_y = self.train_raw_df["adr"]
         
-        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()
+        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy(), feat_cols
  
     def get_cancel_data(self, onehot_x=False):
         if onehot_x:
@@ -118,6 +120,7 @@ class Dataset:
             train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
             train_x = train_ohfeat_df
             test_x = test_ohfeat_df
+            feat_cols = ohfeat_cols
         
         else:
             train_feat_df = self.train_feat_df.copy()
@@ -130,10 +133,11 @@ class Dataset:
             
             train_x = train_feat_df
             test_x = test_feat_df
+            feat_cols = self.feat_cols
         
         train_y = self.train_raw_df["is_canceled"]
         
-        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy()
+        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy(), feat_cols
  
     def get_groups(self, case):
         return getattr(self, "{}_group".format(case))

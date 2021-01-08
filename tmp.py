@@ -22,21 +22,21 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 #                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
 
 adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
-                        n_estimators=200, learning_rate=0.1, min_child_weight=8, max_depth=6, gamma=0, \
-                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=1e-3)
+                        n_estimators=200, learning_rate=0.08, min_child_weight=10, max_depth=6, gamma=0, \
+                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=0)
 cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
                             tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
-                            n_estimators=250, learning_rate=0.2, min_child_weight=10, max_depth=3, gamma=0, \
-                            subsample=0.7, colsample_bytree=0.9, reg_lambda=1, reg_alpha=0)
+                            n_estimators=250, learning_rate=0.1, min_child_weight=10, max_depth=3, gamma=0, \
+                            subsample=1, colsample_bytree=0.9, reg_lambda=1e-1, reg_alpha=1e-2)
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
-    adr_x, adr_y, test_adr_x = dataset.get_adr_data(onehot_x=True)
+    adr_x, adr_y, test_adr_x, adr_ohfeat_cols = dataset.get_adr_data(onehot_x=True)
     print(adr_x.shape)
-    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=True)
+    cancel_x, cancel_y, test_cancel_x, cancel_ohfeat_cols = dataset.get_cancel_data(onehot_x=True)
     print(cancel_x.shape)
     groups = np.array(dataset.get_groups("train"))
     total_nights = np.array(dataset.get_stay_nights("train"))
@@ -51,9 +51,9 @@ if __name__ == "__main__":
 
 # Start re-training
     model = model.fit((adr_x, cancel_x), (adr_y, cancel_y))
-    for col, i in sorted(zip(model.adr_model.feature_importances_, dataset.ohfeat_cols), reverse=True):
+    for col, i in sorted(zip(model.adr_model.feature_importances_, adr_ohfeat_cols), reverse=True):
         print(col, i)
-    for col, i in sorted(zip(model.cancel_model.feature_importances_, dataset.ohfeat_cols), reverse=True):
+    for col, i in sorted(zip(model.cancel_model.feature_importances_, cancel_ohfeat_cols), reverse=True):
         print(col, i)
 
 # Start testing and Write the result file

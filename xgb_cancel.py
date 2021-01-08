@@ -8,7 +8,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
 if __name__ == "__main__":
     dataset = Dataset("./data")
-    train_x, train_y, _ = dataset.get_cancel_data(onehot_x=True)
+    train_x, train_y, _, _ = dataset.get_cancel_data(onehot_x=True)
     print(train_x.shape)
     groups = dataset.get_groups("train")
     model = XGBClassifier(objective="binary:logistic", eval_metric="error", 
@@ -16,16 +16,16 @@ if __name__ == "__main__":
     params_grid = [{
         "n_estimators": [250],
         "learning_rate": [0.1],
-        "min_child_weight": [10],
-        "max_depth": [3],
+        #"min_child_weight": [1],
+        #"max_depth": [6],
         "gamma": [0],
-        "subsample": [1],
-        "colsample_bytree": [0.9],
-        "reg_lambda": [1e-1],
-        "reg_alpha": [1e-2],
+        "subsample": [0.8],
+        "colsample_bytree": [0.8],
+        "reg_lambda": [1],
+        "reg_alpha": [0],
         #"learning_rate": [0.3, 0.2, 0.1, 0.08, 0.05, 0.02, 0.01],
-        #"min_child_weight": [8, 10, 12, 15, 18, 20],
-        #"max_depth": [2, 3, 5, 6, 8, 10],
+        "min_child_weight": [8, 10, 12, 15, 18, 20],
+        "max_depth": [2, 3, 5, 6, 8, 10],
         #"subsample": [0.6, 0.7, 0.8, 0.9, 1.0],
         #"colsample_bytree": [0.6, 0.7, 0.8, 0.9, 1.0],
         #"reg_lambda": [1, 1e-1, 1e-2, 1e-3],

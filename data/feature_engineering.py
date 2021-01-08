@@ -30,10 +30,10 @@ if __name__ == "__main__":
         df_["week_order_count"] = df_.groupby("year_week")["order_count"].transform("count")
         df_["month_order_count"] = df_.groupby("year_month")["order_count"].transform("count")
         df_["arrival_day_of_week"] = df_["full_date"].dt.dayofweek
-        df_["total_stay_nights"] = df_["stays_in_week_nights"] + df_["stays_in_weekend_nights"]
-        df_[["stays_in_{}_nights".format(s) for s in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]]] = \
-                df_.apply(lambda r: count_dow_nights(r["arrival_day_of_week"], r["total_stay_nights"]), \
-                            result_type="expand", axis=1)
+        #df_["total_stay_nights"] = df_["stays_in_week_nights"] + df_["stays_in_weekend_nights"]
+        #df_[["stays_in_{}_nights".format(s) for s in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]]] = \
+        #        df_.apply(lambda r: count_dow_nights(r["arrival_day_of_week"], r["total_stay_nights"]), \
+        #                    result_type="expand", axis=1)
 
         df_ = df_.drop(["arrival_date_month_int", "full_date", "year_month", "year_week", "order_count"], axis=1)
         df_.to_csv("{}_new.csv".format(case), index=False)
