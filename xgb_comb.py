@@ -8,35 +8,35 @@ from sklearn.ensemble import VotingRegressor, VotingClassifier
 from dataset import Dataset
 from utils import *
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
-#with open("xgb_outputs/ohfeat_new/adr_opt_s/trials_0.json", 'r') as f:
-#    all_adr_params = [item["params"] for item in json.load(f)[:1]]
-#adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
-#                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
+with open("xgb_outputs/ohfeat_new_drop/adr_opt_s/trials_0.json", 'r') as f:
+    all_adr_params = [item["params"] for item in json.load(f)[:10]]
+adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
+                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
 
-#with open("xgb_outputs/ohfeat_new/cancel_opt_s/trials_0.json", 'r') as f:
-#    all_cancel_params = [item["params"] for item in json.load(f)[:1]]
-#cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
-#                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
-#                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
+with open("xgb_outputs/ohfeat_new_drop/cancel_opt_s/trials_0.json", 'r') as f:
+    all_cancel_params = [item["params"] for item in json.load(f)[:10]]
+cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
+                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
+                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
 
-adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
-                        n_estimators=200, learning_rate=0.08, min_child_weight=10, max_depth=6, gamma=0, \
-                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=0)
-cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
-                            tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
-                            n_estimators=250, learning_rate=0.1, min_child_weight=10, max_depth=3, gamma=0, \
-                            subsample=1, colsample_bytree=0.9, reg_lambda=1e-1, reg_alpha=1e-2)
+#adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
+#                        n_estimators=200, learning_rate=0.1, min_child_weight=5, max_depth=5, gamma=5, \
+#                        subsample=0.8, colsample_bytree=0.9, reg_lambda=1, reg_alpha=1e-3)
+#cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
+#                            tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
+#                            n_estimators=250, learning_rate=0.08, min_child_weight=18, max_depth=3, gamma=0, \
+#                            subsample=0.7, colsample_bytree=1.0, reg_lambda=1e-1, reg_alpha=1e-2)
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
-    adr_x, adr_y, test_adr_x = dataset.get_adr_data(onehot_x=True)
+    adr_x, adr_y, test_adr_x, _ = dataset.get_adr_data(onehot_x=True)
     print(adr_x.shape)
-    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=True)
+    cancel_x, cancel_y, test_cancel_x, _ = dataset.get_cancel_data(onehot_x=True)
     print(cancel_x.shape)
     groups = np.array(dataset.get_groups("train"))
     total_nights = np.array(dataset.get_stay_nights("train"))

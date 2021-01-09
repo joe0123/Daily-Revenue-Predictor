@@ -77,11 +77,11 @@ class DailyRevenueEstimator(BaseEstimator):
         self.adr_model = adr_model
         self.cancel_model = cancel_model
 
-    def fit(self, x, y, sample_weight=None):
+    def fit(self, x, y):
         adr_x, cancel_x = x
         adr_y, cancel_y = y
-        self.adr_model = self.adr_model.fit(adr_x, adr_y, sample_weight=sample_weight)
-        self.cancel_model = self.cancel_model.fit(cancel_x, cancel_y, sample_weight=sample_weight)
+        self.adr_model = self.adr_model.fit(adr_x, adr_y)
+        self.cancel_model = self.cancel_model.fit(cancel_x, cancel_y)
         return self
 
     def predict(self, x, total_nights, groups):

@@ -1,6 +1,8 @@
 import os
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
+from sklearn.preprocessing import MinMaxScaler
 
 class Dataset:
     def __init__(self, data_dir, drop_cols=["ID", "company"], dur=None):
@@ -71,10 +73,20 @@ class Dataset:
         self.train_feat_df, self.test_feat_df, self.feat_cols = self._align_feats(train_feat_df, test_feat_df)
 
         
-    def get_adr_data(self, onehot_x=False):
+    def get_adr_data(self, onehot_x=True, case="tree", scale=False):
+        train_feat_df = self.train_feat_df.copy()
+        test_feat_df = self.test_feat_df.copy()
         if onehot_x:
-            train_ohfeat_df = pd.get_dummies(self.train_feat_df)
-            test_ohfeat_df = pd.get_dummies(self.test_feat_df)
+            if case == "linear":
+                train_feat_df["arrival_date_month"] = train_feat_df["arrival_date_month"].astype("object")
+                train_feat_df["arrival_date_week_number"] = train_feat_df["arrival_date_week_number"].astype("object")
+                train_feat_df["arrival_date_day_of_month"] = train_feat_df["arrival_date_day_of_month"].astype("object")
+                test_feat_df["arrival_date_month"] = test_feat_df["arrival_date_month"].astype("object")
+                test_feat_df["arrival_date_week_number"] = test_feat_df["arrival_date_week_number"].astype("object")
+                test_feat_df["arrival_date_day_of_month"] = test_feat_df["arrival_date_day_of_month"].astype("object")
+
+            train_ohfeat_df = pd.get_dummies(train_feat_df)
+            test_ohfeat_df = pd.get_dummies(test_feat_df)
             
             drop_file = os.path.join(self.data_dir, "adr_drop.txt")
             if os.path.exists(drop_file):
@@ -84,31 +96,43 @@ class Dataset:
                 test_ohfeat_df = test_ohfeat_df.drop(columns=drop_cols, errors="ignore")
             
             train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
-            train_x = train_ohfeat_df
-            test_x = test_ohfeat_df
+            train_x = train_ohfeat_df.to_numpy()
+            test_x = test_ohfeat_df.to_numpy()
             feat_cols = ohfeat_cols
         
         else:
-            train_feat_df = self.train_feat_df.copy()
-            test_feat_df = self.test_feat_df.copy()
-            
             encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
             for col in train_feat_df.select_dtypes(exclude="number").columns:
                 train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
                 test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
             
-            train_x = train_feat_df
-            test_x = test_feat_df
+            train_x = train_feat_df.to_numpy()
+            test_x = test_feat_df.to_numpy()
             feat_cols = self.feat_cols
+        
+        if scale:
+            scaler = MinMaxScaler().fit(np.concatenate((train_x, test_x), axis=0))
+            train_x = scaler.transform(train_x)
+            test_x = scaler.transform(test_x)
         
         train_y = self.train_raw_df["adr"]
         
-        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy(), feat_cols
+        return train_x, train_y, test_x, feat_cols
  
-    def get_cancel_data(self, onehot_x=False):
+    def get_cancel_data(self, onehot_x=True, case="tree", scale=False):
+        train_feat_df = self.train_feat_df.copy()
+        test_feat_df = self.test_feat_df.copy()
         if onehot_x:
-            train_ohfeat_df = pd.get_dummies(self.train_feat_df)
-            test_ohfeat_df = pd.get_dummies(self.test_feat_df)
+            if case != "tree":
+                train_feat_df["arrival_date_month"] = train_feat_df["arrival_date_month"].astype("object")
+                train_feat_df["arrival_date_week_number"] = train_feat_df["arrival_date_week_number"].astype("object")
+                train_feat_df["arrival_date_day_of_month"] = train_feat_df["arrival_date_day_of_month"].astype("object")
+                test_feat_df["arrival_date_month"] = test_feat_df["arrival_date_month"].astype("object")
+                test_feat_df["arrival_date_week_number"] = test_feat_df["arrival_date_week_number"].astype("object")
+                test_feat_df["arrival_date_day_of_month"] = test_feat_df["arrival_date_day_of_month"].astype("object")
+
+            train_ohfeat_df = pd.get_dummies(train_feat_df)
+            test_ohfeat_df = pd.get_dummies(test_feat_df)
             
             drop_file = os.path.join(self.data_dir, "cancel_drop.txt")
             if os.path.exists(drop_file):
@@ -118,26 +142,28 @@ class Dataset:
                 test_ohfeat_df = test_ohfeat_df.drop(columns=drop_cols, errors="ignore")
             
             train_ohfeat_df, test_ohfeat_df, ohfeat_cols = self._align_feats(train_ohfeat_df, test_ohfeat_df)
-            train_x = train_ohfeat_df
-            test_x = test_ohfeat_df
+            train_x = train_ohfeat_df.to_numpy()
+            test_x = test_ohfeat_df.to_numpy()
             feat_cols = ohfeat_cols
-        
-        else:
-            train_feat_df = self.train_feat_df.copy()
-            test_feat_df = self.test_feat_df.copy()
             
+        else:
             encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
             for col in train_feat_df.select_dtypes(exclude="number").columns:
                 train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
                 test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
             
-            train_x = train_feat_df
-            test_x = test_feat_df
+            train_x = train_feat_df.to_numpy()
+            test_x = test_feat_df.to_numpy()
             feat_cols = self.feat_cols
         
-        train_y = self.train_raw_df["is_canceled"]
+        if scale:
+            scaler = MinMaxScaler().fit(np.concatenate((train_x, test_x), axis=0))
+            train_x = scaler.transform(train_x)
+            test_x = scaler.transform(test_x)
+
+        train_y = self.train_raw_df["is_canceled"].to_numpy()
         
-        return train_x.to_numpy(), train_y.to_numpy(), test_x.to_numpy(), feat_cols
+        return train_x, train_y, test_x, feat_cols
  
     def get_groups(self, case):
         return getattr(self, "{}_group".format(case))

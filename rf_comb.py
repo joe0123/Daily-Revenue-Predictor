@@ -1,60 +1,48 @@
 import numpy as np
-from tqdm import tqdm
+import os
+import json
 import itertools
-from sklearn.model_selection import ParameterGrid
-from sklearn.linear_model import LinearRegression, Lasso, Ridge, HuberRegressor, LogisticRegression
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-from sklearn.feature_selection import SelectFromModel
-from sklearn.pipeline import Pipeline
 
 from dataset import Dataset
 from utils import *
 
-MODEL_ADR = RandomForestRegressor(n_estimators=800, min_samples_split=2, min_samples_leaf=1, max_features="auto", max_depth=60, criterion="mse", random_state=0, n_jobs=-1)
-print(MODEL_ADR)
 
-MODEL_CANCEL = RandomForestClassifier(n_estimators=400, min_samples_split=2e-3, min_samples_leaf=5e-4, max_features=None, max_depth=10, criterion="entropy", random_state=0, n_jobs=-1)
-print(MODEL_CANCEL)
+adr_model = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, max_features="auto", max_depth=70, criterion="mse", random_state=0, n_jobs=-1)
+
+cancel_model = RandomForestClassifier(n_estimators=300, min_samples_leaf=1e-4, max_features=None, max_depth=20, criterion="entropy", random_state=0, n_jobs=-1)
+
+model = DailyRevenueEstimator(adr_model, cancel_model)
 
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
-    adr_x, adr_y, test_adr_x = dataset.get_adr_data(onehot_x=True)
+    adr_x, adr_y, test_adr_x, _ = dataset.get_adr_data(onehot_x=True)
     print(adr_x.shape)
-    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=True)
+    cancel_x, cancel_y, test_cancel_x, _ = dataset.get_cancel_data(onehot_x=True)
     print(cancel_x.shape)
     groups = np.array(dataset.get_groups("train"))
     total_nights = np.array(dataset.get_stay_nights("train"))
-    labels = dataset.train_label_df["label"].to_numpy()
+    labels_df = dataset.train_label_df
     test_groups = np.array(dataset.get_groups("test"))
     test_total_nights = np.array(dataset.get_stay_nights("test"))
     
-    model = DailyRevenueEstimator(MODEL_ADR, MODEL_CANCEL)
-    
-    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=[2])
-    cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5))
+    #cv = GroupTimeSeriesSplit(n_splits=5).split(adr_x, groups=groups, select_splits=range(2, 5))
+    split_groups = ['-'.join(g.split('-')[:2]) for g in groups]
+    cv = sliding_monthly_split(adr_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=True)
+    cv_result = [i for i in cv]
 
-# Start CV
-    errs = []
-    for train_i, (train_gi, _), valid_i, (valid_gi, _) in tqdm(cv):
-        train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
-        valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
-        train_cancel_x, train_cancel_y = cancel_x[train_i], cancel_y[train_i]
-        valid_cancel_x, _ = cancel_x[valid_i], cancel_y[valid_i]
-        valid_labels = labels[valid_gi]
+    single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
+    single_cv(x=cancel_x, y=cancel_y, model=cancel_model, params={}, cv=cv_result, scoring="accuracy")
 
-        model = model.fit(train_adr_x, train_adr_y, train_cancel_x, train_cancel_y)
-
-        err = model.score(valid_adr_x, valid_cancel_x, valid_labels, total_nights[valid_i], groups[valid_i])
-        errs.append(err)
-    
-    print("Errors: {:.2f} {}".format(np.mean(errs), errs), flush=True)
+# Start CV 
+    result = comb_cv((adr_x, cancel_x), (adr_y, cancel_y), groups, total_nights, labels_df, model, cv_result)
 
 # Start re-training
-    model = model.fit(adr_x, adr_y, cancel_x, cancel_y)
+    model = model.fit((adr_x, cancel_x), (adr_y, cancel_y))
 
 # Start testing and Write the result file
-    result = model.predict(test_adr_x, test_cancel_x, test_total_nights, test_groups)
+    result = dict(model.predict((test_adr_x, test_cancel_x), test_total_nights, test_groups).values)
     df = dataset.test_nolabel_df
-    df["label"] = result
+    df["label"] = df["arrival_date"].map(result)
     df.to_csv("result.csv", index=False)

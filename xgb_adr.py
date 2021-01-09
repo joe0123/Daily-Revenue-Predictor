@@ -4,7 +4,7 @@ import json
 from xgboost import XGBRegressor
 from dataset import Dataset
 from utils import *
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
 if __name__ == "__main__":
     dataset = Dataset("./data")
@@ -14,17 +14,18 @@ if __name__ == "__main__":
     model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0)
     params_grid = [{
         "n_estimators": [200],
-        "learning_rate": [0.05],
-        #"min_child_weight": [1],
-        #"max_depth": [6],
-        "gamma": [0],
+        "learning_rate": [0.1],
+        "min_child_weight": [5],
+        "max_depth": [5],
+        "gamma": [5],
         "subsample": [0.8],
-        "colsample_bytree": [0.8],
+        "colsample_bytree": [0.9],
         "reg_lambda": [1],
-        "reg_alpha": [0],
+        "reg_alpha": [1e-3],
         #"learning_rate": [0.2, 0.1, 0.08, 0.05, 0.02, 0.01],
-        "min_child_weight": [2, 5, 8, 10, 12, 15, 18, 20],
-        "max_depth": [2, 5, 6, 8, 10, 12],
+        #"min_child_weight": [2, 5, 8, 10, 12, 15, 18, 20],
+        #"max_depth": [2, 5, 6, 8, 10, 12],
+        #"gamma": [0, 1, 2, 3, 5, 8, 10, 15],
         #"subsample": [0.6, 0.7, 0.8, 0.9, 1.0],
         #"colsample_bytree": [0.6, 0.7, 0.8, 0.9, 1.0],
         #"reg_lambda": [1, 1e-1, 1e-2, 1e-3],
