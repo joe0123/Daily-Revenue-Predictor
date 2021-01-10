@@ -17,7 +17,7 @@ if __name__ == "__main__":
                                                                                 solver="liblinear", random_state=0))), 
                     ("classification", LogisticRegression(max_iter=1e+8))])
     params_grid = {
-        "feature_selection__estimator__C": [1, 1e+1, 1e+2, 1e+3],
+        "feature_selection__estimator__C": [1, 1e+1, 1e+2],
         "classification__C": [1, 1e+1, 1e+2, 1e+3]}
     print(params_grid)
 

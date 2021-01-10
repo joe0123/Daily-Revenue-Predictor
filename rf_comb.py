@@ -8,9 +8,9 @@ from dataset import Dataset
 from utils import *
 
 
-adr_model = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, max_features="auto", max_depth=70, criterion="mse", random_state=0, n_jobs=-1)
+adr_model = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, max_features="auto", max_depth=100, criterion="mse", random_state=0, n_jobs=-1)
 
-cancel_model = RandomForestClassifier(n_estimators=300, min_samples_leaf=1e-4, max_features=None, max_depth=20, criterion="entropy", random_state=0, n_jobs=-1)
+cancel_model = RandomForestClassifier(n_estimators=300, min_samples_leaf=2e-3, max_features=None, max_depth=80, criterion="entropy", random_state=0, n_jobs=-1)
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     cv = sliding_monthly_split(adr_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=True)
     cv_result = [i for i in cv]
 
-    single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
+    #single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
     single_cv(x=cancel_x, y=cancel_y, model=cancel_model, params={}, cv=cv_result, scoring="accuracy")
 
 # Start CV 

@@ -48,11 +48,13 @@ def single_search_cv(x, y, model, params_grid, cv, scoring, fit_params=dict(), \
     
     return results
 
-def comb_cv(x, y, groups, total_nights, labels_df, model, cv):
+def comb_cv(params, x, y, groups, total_nights, labels_df, model, cv):
+    start_time = time.time()
     adr_x, cancel_x = x
     adr_y, cancel_y = y
     train_scores = []
     valid_scores = []
+    model.set_params(params)
     for train_i, valid_i in cv:
         train_adr_x, train_adr_y = adr_x[train_i], adr_y[train_i]
         valid_adr_x, _ = adr_x[valid_i], adr_y[valid_i]
@@ -66,10 +68,20 @@ def comb_cv(x, y, groups, total_nights, labels_df, model, cv):
         valid_score = model.score((valid_adr_x, valid_cancel_x), total_nights[valid_i], groups[valid_i], labels_df)
         valid_scores.append(valid_score)
     
+    dur = np.around(time.time() - start_time, decimals=2)
     result = {"mean_score": np.around(np.mean(valid_scores), decimals=4), \
-                "valid_scores": valid_scores, "train_scores": train_scores}
-    print('\n', result, sep='', flush=True)
+                "valid_scores": valid_scores, "train_scores": train_scores, "params": params}
+    print("\n{} sec -- ".format(dur), result, sep='', flush=True)
     return result
+
+def comb_search_cv(x, y, groups, total_nights, labels_df, model, params_grid, cv, \
+                    n_iter=None, random_state=0, n_jobs=1):
+    params_grid = shuffle(ParameterGrid(params_grid), random_state=random_state, n_samples=n_iter)
+    cv_result = [i for i in cv]
+    comb_cv_ = partial(comb_cv, x=x, y=y, groups=groups, total_nights=total_nights, labels_df=labels_df, model=model, cv=cv_result)
+    results = Parallel(n_jobs=n_jobs)(delayed(comb_cv_)(params) for params in params_grid)
+    
+    return results
 
 
 class DailyRevenueEstimator(BaseEstimator):

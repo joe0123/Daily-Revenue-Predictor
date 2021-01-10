@@ -1,0 +1,306 @@
+nohup: 忽略輸入
+(91531, 625)
+{'feature_selection__estimator__alpha': [1, 0.1, 0.01], 'regression__alpha': [1, 0.1, 0.01, 0.001]}
+
+27.09 sec -- {'mean_score': -27.6005, 'valid_scores': [-34.6256, -32.7048, -28.1402, -24.1941, -22.4125, -23.5257], 'train_scores': [-25.0968, -25.281, -28.0857, -27.9283, -27.6621, -26.589], 'params': {'regression__alpha': 0.01, 'feature_selection__estimator__alpha': 1}}
+
+29.68 sec -- {'mean_score': -27.6004, 'valid_scores': [-34.6255, -32.7048, -28.1397, -24.1941, -22.4125, -23.5257], 'train_scores': [-25.0967, -25.281, -28.0857, -27.9283, -27.6621, -26.589], 'params': {'regression__alpha': 0.1, 'feature_selection__estimator__alpha': 1}}
+
+34.97 sec -- {'mean_score': -27.5992, 'valid_scores': [-34.624, -32.7042, -28.1351, -24.1938, -22.4124, -23.5256], 'train_scores': [-25.0962, -25.2804, -28.0854, -27.928, -27.6619, -26.5888], 'params': {'regression__alpha': 1, 'feature_selection__estimator__alpha': 1}}
+
+41.23 sec -- {'mean_score': -27.6005, 'valid_scores': [-34.6256, -32.7048, -28.1402, -24.1941, -22.4125, -23.5257], 'train_scores': [-25.0968, -25.281, -28.0857, -27.9283, -27.6622, -26.589], 'params': {'regression__alpha': 0.001, 'feature_selection__estimator__alpha': 1}}
+
+51.14 sec -- {'mean_score': -23.5395, 'valid_scores': [-30.1543, -28.3959, -24.59, -21.5389, -18.6775, -17.8805], 'train_scores': [-19.7016, -19.574, -22.5304, -22.1637, -22.0572, -21.4485], 'params': {'regression__alpha': 1, 'feature_selection__estimator__alpha': 0.1}}
+
+74.51 sec -- {'mean_score': -23.5392, 'valid_scores': [-30.1586, -28.3899, -24.6005, -21.5377, -18.675, -17.8733], 'train_scores': [-19.7025, -19.5746, -22.5327, -22.165, -22.0579, -21.4488], 'params': {'regression__alpha': 0.1, 'feature_selection__estimator__alpha': 0.1}}
+
+76.94 sec -- {'mean_score': -23.5392, 'valid_scores': [-30.1591, -28.3893, -24.6015, -21.5376, -18.6748, -17.8726], 'train_scores': [-19.7026, -19.5747, -22.533, -22.1651, -22.058, -21.4489], 'params': {'regression__alpha': 0.01, 'feature_selection__estimator__alpha': 0.1}}
+
+77.32 sec -- {'mean_score': -23.5391, 'valid_scores': [-30.1591, -28.3892, -24.6016, -21.5376, -18.6747, -17.8725], 'train_scores': [-19.7027, -19.5747, -22.533, -22.1652, -22.058, -21.4489], 'params': {'regression__alpha': 0.001, 'feature_selection__estimator__alpha': 0.1}}
+
+190.45 sec -- {'mean_score': -23.9027, 'valid_scores': [-32.2541, -27.8138, -24.4016, -21.7345, -18.9428, -18.2695], 'train_scores': [-18.7332, -18.4365, -21.4365, -21.1325, -21.0822, -20.499], 'params': {'regression__alpha': 0.1, 'feature_selection__estimator__alpha': 0.01}}
+
+243.31 sec -- {'mean_score': -23.8592, 'valid_scores': [-31.993, -27.8112, -24.3776, -21.7319, -18.9588, -18.2824], 'train_scores': [-18.7486, -18.4513, -21.4516, -21.144, -21.0918, -20.5079], 'params': {'regression__alpha': 1, 'feature_selection__estimator__alpha': 0.01}}
+
+245.0 sec -- {'mean_score': -23.9081, 'valid_scores': [-32.286, -27.8141, -24.4044, -21.735, -18.941, -18.2682], 'train_scores': [-18.7316, -18.4349, -21.4348, -21.1312, -21.0811, -20.498], 'params': {'regression__alpha': 0.001, 'feature_selection__estimator__alpha': 0.01}}
+
+244.66 sec -- {'mean_score': -23.9076, 'valid_scores': [-32.283, -27.8141, -24.4042, -21.735, -18.9412, -18.2683], 'train_scores': [-18.7317, -18.4351, -21.435, -21.1313, -21.0812, -20.4981], 'params': {'regression__alpha': 0.01, 'feature_selection__estimator__alpha': 0.01}}
+
+mean_score: [
+    {
+        "mean_score": -23.5391,
+        "valid_scores": [
+            -30.1591,
+            -28.3892,
+            -24.6016,
+            -21.5376,
+            -18.6747,
+            -17.8725
+        ],
+        "train_scores": [
+            -19.7027,
+            -19.5747,
+            -22.533,
+            -22.1652,
+            -22.058,
+            -21.4489
+        ],
+        "params": {
+            "regression__alpha": 0.001,
+            "feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": -23.5392,
+        "valid_scores": [
+            -30.1591,
+            -28.3893,
+            -24.6015,
+            -21.5376,
+            -18.6748,
+            -17.8726
+        ],
+        "train_scores": [
+            -19.7026,
+            -19.5747,
+            -22.533,
+            -22.1651,
+            -22.058,
+            -21.4489
+        ],
+        "params": {
+            "regression__alpha": 0.01,
+            "feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": -23.5392,
+        "valid_scores": [
+            -30.1586,
+            -28.3899,
+            -24.6005,
+            -21.5377,
+            -18.675,
+            -17.8733
+        ],
+        "train_scores": [
+            -19.7025,
+            -19.5746,
+            -22.5327,
+            -22.165,
+            -22.0579,
+            -21.4488
+        ],
+        "params": {
+            "regression__alpha": 0.1,
+            "feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": -23.5395,
+        "valid_scores": [
+            -30.1543,
+            -28.3959,
+            -24.59,
+            -21.5389,
+            -18.6775,
+            -17.8805
+        ],
+        "train_scores": [
+            -19.7016,
+            -19.574,
+            -22.5304,
+            -22.1637,
+            -22.0572,
+            -21.4485
+        ],
+        "params": {
+            "regression__alpha": 1,
+            "feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": -23.8592,
+        "valid_scores": [
+            -31.993,
+            -27.8112,
+            -24.3776,
+            -21.7319,
+            -18.9588,
+            -18.2824
+        ],
+        "train_scores": [
+            -18.7486,
+            -18.4513,
+            -21.4516,
+            -21.144,
+            -21.0918,
+            -20.5079
+        ],
+        "params": {
+            "regression__alpha": 1,
+            "feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": -23.9027,
+        "valid_scores": [
+            -32.2541,
+            -27.8138,
+            -24.4016,
+            -21.7345,
+            -18.9428,
+            -18.2695
+        ],
+        "train_scores": [
+            -18.7332,
+            -18.4365,
+            -21.4365,
+            -21.1325,
+            -21.0822,
+            -20.499
+        ],
+        "params": {
+            "regression__alpha": 0.1,
+            "feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": -23.9076,
+        "valid_scores": [
+            -32.283,
+            -27.8141,
+            -24.4042,
+            -21.735,
+            -18.9412,
+            -18.2683
+        ],
+        "train_scores": [
+            -18.7317,
+            -18.4351,
+            -21.435,
+            -21.1313,
+            -21.0812,
+            -20.4981
+        ],
+        "params": {
+            "regression__alpha": 0.01,
+            "feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": -23.9081,
+        "valid_scores": [
+            -32.286,
+            -27.8141,
+            -24.4044,
+            -21.735,
+            -18.941,
+            -18.2682
+        ],
+        "train_scores": [
+            -18.7316,
+            -18.4349,
+            -21.4348,
+            -21.1312,
+            -21.0811,
+            -20.498
+        ],
+        "params": {
+            "regression__alpha": 0.001,
+            "feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": -27.5992,
+        "valid_scores": [
+            -34.624,
+            -32.7042,
+            -28.1351,
+            -24.1938,
+            -22.4124,
+            -23.5256
+        ],
+        "train_scores": [
+            -25.0962,
+            -25.2804,
+            -28.0854,
+            -27.928,
+            -27.6619,
+            -26.5888
+        ],
+        "params": {
+            "regression__alpha": 1,
+            "feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": -27.6004,
+        "valid_scores": [
+            -34.6255,
+            -32.7048,
+            -28.1397,
+            -24.1941,
+            -22.4125,
+            -23.5257
+        ],
+        "train_scores": [
+            -25.0967,
+            -25.281,
+            -28.0857,
+            -27.9283,
+            -27.6621,
+            -26.589
+        ],
+        "params": {
+            "regression__alpha": 0.1,
+            "feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": -27.6005,
+        "valid_scores": [
+            -34.6256,
+            -32.7048,
+            -28.1402,
+            -24.1941,
+            -22.4125,
+            -23.5257
+        ],
+        "train_scores": [
+            -25.0968,
+            -25.281,
+            -28.0857,
+            -27.9283,
+            -27.6621,
+            -26.589
+        ],
+        "params": {
+            "regression__alpha": 0.01,
+            "feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": -27.6005,
+        "valid_scores": [
+            -34.6256,
+            -32.7048,
+            -28.1402,
+            -24.1941,
+            -22.4125,
+            -23.5257
+        ],
+        "train_scores": [
+            -25.0968,
+            -25.281,
+            -28.0857,
+            -27.9283,
+            -27.6622,
+            -26.589
+        ],
+        "params": {
+            "regression__alpha": 0.001,
+            "feature_selection__estimator__alpha": 1
+        }
+    }
+]

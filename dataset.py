@@ -14,9 +14,11 @@ class Dataset:
         self.create_groups()
 
     def load_df(self):
-        self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train_new.csv"))
+        self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train.csv"))
+        #self.train_raw_df = pd.read_csv(os.path.join(self.data_dir, "train_new.csv"))
         self.train_label_df = pd.read_csv(os.path.join(self.data_dir, "train_label.csv"))
-        self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test_new.csv"))
+        self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test.csv"))
+        #self.test_raw_df = pd.read_csv(os.path.join(self.data_dir, "test_new.csv"))
         self.test_nolabel_df = pd.read_csv(os.path.join(self.data_dir, "test_nolabel.csv"))
     
     def _build_date_group(self, df):
