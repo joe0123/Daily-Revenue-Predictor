@@ -23,22 +23,22 @@ https://github.com/joe0123/HTML2020_final/blob/master/Report.pdf
 
 ## Usage
 ### Linear Model
-Find optimal parameters:
+Find optimal parameters automatically (by random search):
 ```
 python lin_comb.py
 ```
-Train and make inference with optimal parameters:
+Train and make inference with optimal parameters found by random search:
 ```
 python lin_infer.py
 ```
 
 ### Random Forest
-Find optimal parameters:
+Find optimal parameters automatically (by random search):
 ```
 python rf_adr.py
 python rf_cancel.py
 ```
-Train and make inference with optimal parameters:
+Train and make inference with optimal parameters found by random search:
 ```
 python rf_infer.py
 ```
@@ -53,12 +53,15 @@ Train and make inference with optimal parameters found manaully:
 ```
 python xgb_infer.py
 ```
-Find optimal parameters automatically (with Optuna):
+Find optimal parameters automatically (by Optuna):
 ```
 python xgb_adr_opt.py
 python xgb_cancel_opt.py
 ```
-Train and make inference with optimal parameters found automatically (with Optuna):
+Train and make inference with optimal parameters found by Optuna:
 ```
 python xgb_infer_opt.py
 ```
+
+### Futher
+In the appendix of our report, we did some experiments about feature selection for agency and country. To train and make inference with selected features, change *.adr_drop.txt* and *.cancel_drop.txt* to *adr_drop.txt* and *cancel_drop.txt*, respectively; then, run the commands mentioned above again.
