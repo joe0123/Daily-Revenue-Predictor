@@ -10,24 +10,16 @@ from utils import *
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
-#with open("xgb_outputs/ohfeat_new/adr_opt_s/trials_0_.json", 'r') as f:
-#    all_adr_params = [item["params"] for item in json.load(f)[:5]]
-#adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
-#                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
+with open("xgb_outputs/ohfeat_new/adr_opt_s/trials_0_.json", 'r') as f:
+    all_adr_params = [item["params"] for item in json.load(f)[:5]]
+adr_model = VotingRegressor([(str(i), XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", eval_metric="mae", 
+                    random_state=0, n_estimators=200, gamma=0, **adr_params)) for i, adr_params in enumerate(all_adr_params)])
 
-#with open("xgb_outputs/ohfeat_new/cancel_opt_s/trials_0_.json", 'r') as f:
-#    all_cancel_params = [item["params"] for item in json.load(f)[:5]]
-#cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
-#                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
-#                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
-
-adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
-                        n_estimators=200, learning_rate=0.08, min_child_weight=10, max_depth=8, gamma=3, \
-                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1e-3, reg_alpha=0)
-cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
-                            tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
-                            n_estimators=250, learning_rate=0.08, min_child_weight=10, max_depth=3, gamma=3, \
-                            subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=0)
+with open("xgb_outputs/ohfeat_new/cancel_opt_s/trials_0_.json", 'r') as f:
+    all_cancel_params = [item["params"] for item in json.load(f)[:5]]
+cancel_model = VotingClassifier([(str(i), XGBClassifier(objective="binary:logistic", eval_metric="error", 
+                    tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False,
+                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
