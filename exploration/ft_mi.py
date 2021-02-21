@@ -6,8 +6,8 @@ import pandas as pd
 
 root = ".."
 sys.path.append(root)
-from dataset import Dataset
-from utils import *
+from src.dataset import Dataset
+from src.utils import *
 
 if __name__ == "__main__":
     dataset = Dataset(os.path.join(root, "data"))
