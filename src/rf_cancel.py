@@ -6,7 +6,7 @@ from dataset import Dataset
 from utils import *
 
 if __name__ == "__main__":
-    dataset = Dataset("./data")
+    dataset = Dataset("../data")
     train_x, train_y, _, _ = dataset.get_cancel_data(onehot_x=True)
     print(train_x.shape)
     groups = dataset.get_groups("train")

@@ -21,7 +21,7 @@ model = DailyRevenueEstimator(adr_model, cancel_model)
 
 if __name__ == "__main__":
 # Initialization
-    dataset = Dataset("./data")
+    dataset = Dataset("../data")
     adr_x, adr_y, test_adr_x, _ = dataset.get_adr_data(onehot_x=True, scale=True)
     print(adr_x.shape)
     cancel_x, cancel_y, test_cancel_x, _ = dataset.get_cancel_data(onehot_x=True, scale=True)

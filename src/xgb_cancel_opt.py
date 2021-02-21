@@ -33,7 +33,7 @@ def optuna_obj(trial, train_x, train_y, groups):
 
 
 if __name__ == "__main__":
-    dataset = Dataset("./data")
+    dataset = Dataset("../data")
     train_x, train_y, _, _ = dataset.get_cancel_data(onehot_x=True)
     print(train_x.shape)
     groups = np.array(dataset.get_groups("train"))
