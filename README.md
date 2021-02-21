@@ -21,7 +21,17 @@ https://github.com/joe0123/HTML2020_final/blob/master/Report.pdf
 * xgboost == 1.3.1
 * optuna == 2.3.0
 
-## Usage
+## Usage for exploration/
+Find the relationship between labels and revenues:
+```
+python task.py
+```
+Find the feature importance with respect to adr and is_canceled.
+```
+python ft_mi.py
+```
+
+## Usage for src/
 ### Linear Model
 Find optimal parameters automatically (by random search):
 ```
@@ -64,4 +74,4 @@ python xgb_infer_opt.py
 ```
 
 ### Futher
-In the appendix of our report, we did some experiments about feature selection for agency and country. To train and make inference with selected features, change *.adr_drop.txt* and *.cancel_drop.txt* to *adr_drop.txt* and *cancel_drop.txt*, respectively; then, run the commands mentioned above again.
+In the appendix of our report, we did some experiments about feature selection for agency and country. To train and make inference with selected features, change *data/.adr_drop.txt* and *data/.cancel_drop.txt* to *data/adr_drop.txt* and *data/cancel_drop.txt*, respectively; then, run the commands mentioned above again.
