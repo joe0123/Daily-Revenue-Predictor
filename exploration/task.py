@@ -27,6 +27,8 @@ for i in range(len(df_day)):
 
 s1 = Series(adr)
 s2 = Series(list(df_train_label['label']))
+print('\n')
 for i in range(10):
-    print("Label = {}: min = {}, max = {}".format(i, s1[s2 == i].min(), s1[s2 == i].max()))
+    print("Label = {}: min revenue = {}, max revenue = {}".format(i, s1[s2 == i].min(), s1[s2 == i].max()))
 print("Correlation coefficient = {}".format(s1.corr(s2)))
+print('\n')

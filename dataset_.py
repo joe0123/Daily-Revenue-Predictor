@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 class Dataset:
@@ -56,6 +57,7 @@ class Dataset:
         test_df = test_df.reindex(feat_cols, fill_value=0, axis=1)
 
         return train_df, test_df, feat_cols
+    
     def create_feats(self, drop_cols):
         train_feat_df, train_ohfeat_df = self._build_feats(self.train_raw_df, drop_cols)
         test_feat_df, test_ohfeat_df = self._build_feats(self.test_raw_df, drop_cols)
@@ -65,10 +67,18 @@ class Dataset:
         for col in train_feat_df.select_dtypes(exclude="number").columns:
             self.train_feat_df[col] = encoder.fit_transform(train_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
             self.test_feat_df[col] = encoder.transform(test_feat_df[col].to_numpy().reshape(-1, 1)).reshape(-1)
+    
     def get_adr_data(self, onehot_x=False):
         if onehot_x:
             train_x = self.train_ohfeat_df
             test_x = self.test_ohfeat_df
+            drop_file = os.path.join(self.data_dir, "adr_drop.txt")
+            if os.path.exists(drop_file):
+                with open(drop_file, 'r') as f:
+                    drop_cols = [line.strip() for line in f.readlines()]
+                train_x = train_x.drop(columns=drop_cols)
+                test_x = test_x.drop(columns=drop_cols)
+
         else:
             train_x = self.train_feat_df
             test_x = self.test_feat_df
@@ -80,6 +90,14 @@ class Dataset:
         if onehot_x:
             train_x = self.train_ohfeat_df
             test_x = self.test_ohfeat_df
+            
+            drop_file = os.path.join(self.data_dir, "cancel_drop.txt")
+            if os.path.exists(drop_file):
+                with open(drop_file, 'r') as f:
+                    drop_cols = [line.strip() for line in f.readlines()]
+                train_x = train_x.drop(columns=drop_cols)
+                test_x = test_x.drop(columns=drop_cols)
+
         else:
             train_x = self.train_feat_df
             test_x = self.test_feat_df

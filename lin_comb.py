@@ -7,14 +7,15 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_selection import SelectFromModel
 from sklearn.pipeline import Pipeline
 
-from dataset import Dataset
+from dataset_ import Dataset
 from utils import *
 
 
 adr_model = Pipeline([("feature_selection", SelectFromModel(Lasso(alpha=1e-2, max_iter=1e+8))), \
                     ("regression", Ridge(alpha=1, max_iter=1e+8))])
-cancel_model = Pipeline([("feature_selection", SelectFromModel(LogisticRegression(C=100, max_iter=1e+8, penalty="l1", \
-                                                                                solver="liblinear", random_state=0))), 
+#cancel_model = Pipeline([("feature_selection", SelectFromModel(LogisticRegression(C=100, max_iter=1e+8, penalty="l1", \
+#                                                                                solver="liblinear", random_state=0))), 
+cancel_model = Pipeline([("feature_selection", SelectFromModel(Lasso(alpha=1e-2, max_iter=1e+8))), \
                     ("classification", LogisticRegression(C=10, max_iter=1e+8))])
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
@@ -22,9 +23,11 @@ model = DailyRevenueEstimator(adr_model, cancel_model)
 if __name__ == "__main__":
 # Initialization
     dataset = Dataset("./data")
-    adr_x, adr_y, test_adr_x, _ = dataset.get_adr_data(onehot_x=True, case="linear", scale=True)
+    #adr_x, adr_y, test_adr_x, _ = dataset.get_adr_data(onehot_x=True, case="linear", scale=True)
+    adr_x, adr_y, test_adr_x = dataset.get_adr_data(onehot_x=True)
     print(adr_x.shape)
-    cancel_x, cancel_y, test_cancel_x, _ = dataset.get_cancel_data(onehot_x=True, case="linear", scale=True)
+    #cancel_x, cancel_y, test_cancel_x, _ = dataset.get_cancel_data(onehot_x=True, case="linear", scale=True)
+    cancel_x, cancel_y, test_cancel_x = dataset.get_cancel_data(onehot_x=True)
     print(cancel_x.shape)
     groups = np.array(dataset.get_groups("train"))
     total_nights = np.array(dataset.get_stay_nights("train"))

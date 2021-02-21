@@ -24,7 +24,7 @@ if __name__ == "__main__":
     split_groups = ['-'.join(g.split('-')[:2]) for g in groups]
     cv = sliding_monthly_split(train_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=True)
     results = single_search_cv(x=train_x, y=train_y, model=model, params_grid=params_grid, cv=cv, \
-                        scoring="neg_mean_absolute_error", n_iter=50, random_state=0, n_jobs=4)
+                        scoring="neg_mean_absolute_error", n_iter=50, random_state=0, n_jobs=2)
     
     print_format = lambda sort_key: json.dumps(sorted(results, key=sort_key, reverse=True), indent=4) 
     print("\nmean_score:", print_format(sort_key=lambda item: item["mean_score"]))

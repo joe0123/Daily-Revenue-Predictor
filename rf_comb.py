@@ -32,11 +32,12 @@ if __name__ == "__main__":
     cv = sliding_monthly_split(adr_x, split_groups=split_groups, start_group="2016-05", group_window=5, step=2, soft=True)
     cv_result = [i for i in cv]
 
-    #single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
+    single_cv(x=adr_x, y=adr_y, model=adr_model, params={}, cv=cv_result, scoring="neg_mean_absolute_error")
     single_cv(x=cancel_x, y=cancel_y, model=cancel_model, params={}, cv=cv_result, scoring="accuracy")
 
 # Start CV 
-    result = comb_cv((adr_x, cancel_x), (adr_y, cancel_y), groups, total_nights, labels_df, model, cv_result)
+    result = comb_cv(x=(adr_x, cancel_x), y=(adr_y, cancel_y), groups=groups, total_nights=total_nights, 
+                labels_df=labels_df, model=model, cv=cv_result, params={})
 
 # Start re-training
     model = model.fit((adr_x, cancel_x), (adr_y, cancel_y))

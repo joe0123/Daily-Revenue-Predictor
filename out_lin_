@@ -1,0 +1,1357 @@
+nohup: 忽略輸入
+(91531, 542)
+(91531, 542)
+{('adr', 'feature_selection__estimator__alpha'): [1, 0.1, 0.01], ('adr', 'regression__alpha'): [1, 0.1, 0.01, 0.001], ('cancel', 'feature_selection__estimator__alpha'): [1, 0.1, 0.01], ('cancel', 'classification__C'): [1, 10.0, 100.0, 1000.0]}
+
+49.81 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7180327868852459, 0.8661202185792349, 0.9392523364485982, 1.0245398773006136, 1.0036363636363637, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+52.15 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7147540983606557, 0.8661202185792349, 0.9369158878504673, 1.0245398773006136, 1.0054545454545454, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+126.86 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7147540983606557, 0.8661202185792349, 0.9369158878504673, 1.0245398773006136, 1.0054545454545454, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+353.26 sec -- {'mean_score': 0.6884, 'valid_scores': [0.477124183006536, 0.7254901960784313, 0.7843137254901961, 0.7748344370860927, 0.7555555555555555, 0.6129032258064516], 'train_scores': [0.4163934426229508, 0.4972677595628415, 0.46261682242990654, 0.5030674846625767, 0.5236363636363637, 0.5057471264367817], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1335.53 sec -- {'mean_score': 0.4981, 'valid_scores': [0.5098039215686274, 0.6209150326797386, 0.6013071895424836, 0.4370860927152318, 0.4, 0.41935483870967744], 'train_scores': [0.380327868852459, 0.41530054644808745, 0.4439252336448598, 0.4458077709611452, 0.4818181818181818, 0.4614121510673235], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+1355.49 sec -- {'mean_score': 0.5013, 'valid_scores': [0.5163398692810458, 0.6078431372549019, 0.6013071895424836, 0.4304635761589404, 0.4, 0.45161290322580644], 'train_scores': [0.380327868852459, 0.412568306010929, 0.4485981308411215, 0.4437627811860941, 0.48, 0.46469622331691296], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+199.35 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7147540983606557, 0.8661202185792349, 0.9369158878504673, 1.0245398773006136, 1.0054545454545454, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+181.74 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+62.63 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+71.79 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+665.41 sec -- {'mean_score': 0.6891, 'valid_scores': [0.48366013071895425, 0.7058823529411765, 0.7973856209150327, 0.7682119205298014, 0.7666666666666667, 0.6129032258064516], 'train_scores': [0.4163934426229508, 0.4972677595628415, 0.4602803738317757, 0.5030674846625767, 0.52, 0.49917898193760263], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+855.96 sec -- {'mean_score': 0.8376, 'valid_scores': [0.8431372549019608, 0.6862745098039216, 0.6993464052287581, 0.8543046357615894, 0.8777777777777778, 1.064516129032258], 'train_scores': [0.6721311475409836, 0.8169398907103825, 0.9299065420560748, 1.0265848670756645, 1.0072727272727273, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+932.39 sec -- {'mean_score': 0.8376, 'valid_scores': [0.8431372549019608, 0.6862745098039216, 0.6993464052287581, 0.8543046357615894, 0.8777777777777778, 1.064516129032258], 'train_scores': [0.6721311475409836, 0.8169398907103825, 0.9299065420560748, 1.0265848670756645, 1.0072727272727273, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+3824.47 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+3918.66 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+75.66 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7147540983606557, 0.8661202185792349, 0.9369158878504673, 1.0245398773006136, 1.0054545454545454, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1073.46 sec -- {'mean_score': 0.5003, 'valid_scores': [0.5098039215686274, 0.6209150326797386, 0.6013071895424836, 0.4503311258278146, 0.4, 0.41935483870967744], 'train_scores': [0.380327868852459, 0.4098360655737705, 0.45093457943925236, 0.4458077709611452, 0.48363636363636364, 0.4614121510673235], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+4428.89 sec -- {'mean_score': 0.8324, 'valid_scores': [0.8235294117647058, 0.6601307189542484, 0.7581699346405228, 0.8211920529801324, 0.8666666666666667, 1.064516129032258], 'train_scores': [0.6754098360655738, 0.7978142076502732, 0.9112149532710281, 1.0204498977505112, 0.9818181818181818, 0.9622331691297209], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+4493.73 sec -- {'mean_score': 0.4904, 'valid_scores': [0.5163398692810458, 0.6274509803921569, 0.6078431372549019, 0.45695364238410596, 0.4111111111111111, 0.3225806451612903], 'train_scores': [0.380327868852459, 0.4180327868852459, 0.4369158878504673, 0.4437627811860941, 0.4636363636363636, 0.44170771756978655], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+100.24 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7147540983606557, 0.8661202185792349, 0.9369158878504673, 1.0245398773006136, 1.0054545454545454, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+4658.23 sec -- {'mean_score': 0.4845, 'valid_scores': [0.5098039215686274, 0.6209150326797386, 0.6078431372549019, 0.45695364238410596, 0.3888888888888889, 0.3225806451612903], 'train_scores': [0.3836065573770492, 0.41530054644808745, 0.4369158878504673, 0.44171779141104295, 0.4672727272727273, 0.44170771756978655], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+4804.37 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+91.21 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1020.62 sec -- {'mean_score': 0.8376, 'valid_scores': [0.8431372549019608, 0.6862745098039216, 0.6993464052287581, 0.8543046357615894, 0.8777777777777778, 1.064516129032258], 'train_scores': [0.6721311475409836, 0.8169398907103825, 0.9299065420560748, 1.0245398773006136, 1.0072727272727273, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+66.93 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1445.25 sec -- {'mean_score': 0.5013, 'valid_scores': [0.5163398692810458, 0.6078431372549019, 0.6013071895424836, 0.4304635761589404, 0.4, 0.45161290322580644], 'train_scores': [0.380327868852459, 0.412568306010929, 0.4485981308411215, 0.4437627811860941, 0.48, 0.4630541871921182], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+4699.34 sec -- {'mean_score': 0.8313, 'valid_scores': [0.8235294117647058, 0.6601307189542484, 0.7581699346405228, 0.8145695364238411, 0.8666666666666667, 1.064516129032258], 'train_scores': [0.6754098360655738, 0.7978142076502732, 0.9112149532710281, 1.0204498977505112, 0.9818181818181818, 0.9605911330049262], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+1682.22 sec -- {'mean_score': 0.6884, 'valid_scores': [0.477124183006536, 0.7254901960784313, 0.7843137254901961, 0.7748344370860927, 0.7555555555555555, 0.6129032258064516], 'train_scores': [0.4163934426229508, 0.4972677595628415, 0.46261682242990654, 0.5030674846625767, 0.5236363636363637, 0.5057471264367817], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+499.77 sec -- {'mean_score': 1.0503, 'valid_scores': [0.8627450980392157, 0.869281045751634, 1.0065359477124183, 1.2450331125827814, 1.1888888888888889, 1.1290322580645162], 'train_scores': [0.7180327868852459, 0.8661202185792349, 0.9392523364485982, 1.0245398773006136, 1.0036363636363637, 1.0], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+5597.12 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9182242990654206, 1.01840490797546, 0.9945454545454545, 0.9688013136288999], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+2993.56 sec -- {'mean_score': 0.8376, 'valid_scores': [0.8431372549019608, 0.6862745098039216, 0.6993464052287581, 0.8543046357615894, 0.8777777777777778, 1.064516129032258], 'train_scores': [0.6721311475409836, 0.8169398907103825, 0.9299065420560748, 1.0245398773006136, 1.0072727272727273, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+6319.08 sec -- {'mean_score': 0.4904, 'valid_scores': [0.5163398692810458, 0.6274509803921569, 0.6078431372549019, 0.45695364238410596, 0.4111111111111111, 0.3225806451612903], 'train_scores': [0.380327868852459, 0.4180327868852459, 0.4369158878504673, 0.4437627811860941, 0.4636363636363636, 0.44170771756978655], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+1366.54 sec -- {'mean_score': 0.8181, 'valid_scores': [0.8366013071895425, 0.6405228758169934, 0.7581699346405228, 0.8079470198675497, 0.8333333333333334, 1.032258064516129], 'train_scores': [0.6622950819672131, 0.7841530054644809, 0.9228971962616822, 1.0204498977505112, 0.9945454545454545, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+6266.23 sec -- {'mean_score': 0.8488, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7320261437908496, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+801.1 sec -- {'mean_score': 0.8181, 'valid_scores': [0.8366013071895425, 0.6405228758169934, 0.7581699346405228, 0.8079470198675497, 0.8333333333333334, 1.032258064516129], 'train_scores': [0.6622950819672131, 0.7841530054644809, 0.9252336448598131, 1.0204498977505112, 0.9945454545454545, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+6729.13 sec -- {'mean_score': 0.4882, 'valid_scores': [0.5098039215686274, 0.6209150326797386, 0.6078431372549019, 0.45695364238410596, 0.4111111111111111, 0.3225806451612903], 'train_scores': [0.3836065573770492, 0.4180327868852459, 0.4392523364485981, 0.4437627811860941, 0.4672727272727273, 0.4433497536945813], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+769.61 sec -- {'mean_score': 0.6891, 'valid_scores': [0.48366013071895425, 0.7058823529411765, 0.7973856209150327, 0.7682119205298014, 0.7666666666666667, 0.6129032258064516], 'train_scores': [0.4163934426229508, 0.4972677595628415, 0.4602803738317757, 0.5030674846625767, 0.52, 0.49917898193760263], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1440.28 sec -- {'mean_score': 0.5002, 'valid_scores': [0.5163398692810458, 0.6339869281045751, 0.6013071895424836, 0.4304635761589404, 0.4, 0.41935483870967744], 'train_scores': [0.380327868852459, 0.41530054644808745, 0.4439252336448598, 0.4437627811860941, 0.48, 0.45977011494252873], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+7089.34 sec -- {'mean_score': 0.4904, 'valid_scores': [0.5163398692810458, 0.6274509803921569, 0.6078431372549019, 0.45695364238410596, 0.4111111111111111, 0.3225806451612903], 'train_scores': [0.380327868852459, 0.4180327868852459, 0.4369158878504673, 0.4437627811860941, 0.4636363636363636, 0.44170771756978655], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+778.39 sec -- {'mean_score': 0.8376, 'valid_scores': [0.8431372549019608, 0.6862745098039216, 0.6993464052287581, 0.8543046357615894, 0.8777777777777778, 1.064516129032258], 'train_scores': [0.6721311475409836, 0.8169398907103825, 0.9299065420560748, 1.0245398773006136, 1.0072727272727273, 0.9835796387520526], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+6272.26 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+115.09 sec -- {'mean_score': 1.0589, 'valid_scores': [0.8496732026143791, 0.869281045751634, 0.9215686274509803, 1.2649006622516556, 1.2222222222222223, 1.2258064516129032], 'train_scores': [0.7344262295081967, 0.8688524590163934, 0.9485981308411215, 1.0102249488752557, 1.0145454545454546, 1.0049261083743843], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 1}}
+
+1125.61 sec -- {'mean_score': 0.4992, 'valid_scores': [0.5098039215686274, 0.6143790849673203, 0.6013071895424836, 0.4503311258278146, 0.4, 0.41935483870967744], 'train_scores': [0.380327868852459, 0.4098360655737705, 0.45093457943925236, 0.4458077709611452, 0.48363636363636364, 0.4630541871921182], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+1379.71 sec -- {'mean_score': 0.5013, 'valid_scores': [0.5163398692810458, 0.6078431372549019, 0.6013071895424836, 0.4304635761589404, 0.4, 0.45161290322580644], 'train_scores': [0.380327868852459, 0.412568306010929, 0.4485981308411215, 0.4437627811860941, 0.48, 0.4630541871921182], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+1445.87 sec -- {'mean_score': 0.5002, 'valid_scores': [0.5163398692810458, 0.6339869281045751, 0.6013071895424836, 0.4304635761589404, 0.4, 0.41935483870967744], 'train_scores': [0.380327868852459, 0.41530054644808745, 0.4439252336448598, 0.4437627811860941, 0.48, 0.458128078817734], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 100.0, ('adr', 'regression__alpha'): 0.001, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+3436.72 sec -- {'mean_score': 0.8477, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7254901960784313, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9182242990654206, 1.01840490797546, 0.9945454545454545, 0.9688013136288999], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+1355.42 sec -- {'mean_score': 0.5013, 'valid_scores': [0.5163398692810458, 0.6078431372549019, 0.6013071895424836, 0.4304635761589404, 0.4, 0.45161290322580644], 'train_scores': [0.380327868852459, 0.412568306010929, 0.4485981308411215, 0.4437627811860941, 0.48, 0.4630541871921182], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.1}}
+
+3685.56 sec -- {'mean_score': 0.8488, 'valid_scores': [0.8300653594771242, 0.6928104575163399, 0.7320261437908496, 0.8410596026490066, 0.9, 1.096774193548387], 'train_scores': [0.6950819672131148, 0.8114754098360656, 0.9205607476635514, 1.01840490797546, 0.9945454545454545, 0.9671592775041051], 'params': {('cancel', 'feature_selection__estimator__alpha'): 1, ('cancel', 'classification__C'): 1, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+2997.35 sec -- {'mean_score': 0.8313, 'valid_scores': [0.8235294117647058, 0.6601307189542484, 0.7581699346405228, 0.8145695364238411, 0.8666666666666667, 1.064516129032258], 'train_scores': [0.6754098360655738, 0.7978142076502732, 0.9112149532710281, 1.0204498977505112, 0.9818181818181818, 0.9605911330049262], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.1, ('cancel', 'classification__C'): 10.0, ('adr', 'regression__alpha'): 0.1, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+2989.87 sec -- {'mean_score': 0.4882, 'valid_scores': [0.5228758169934641, 0.6143790849673203, 0.6078431372549019, 0.4503311258278146, 0.4111111111111111, 0.3225806451612903], 'train_scores': [0.380327868852459, 0.4180327868852459, 0.4392523364485981, 0.44171779141104295, 0.46545454545454545, 0.4433497536945813], 'params': {('cancel', 'feature_selection__estimator__alpha'): 0.01, ('cancel', 'classification__C'): 1000.0, ('adr', 'regression__alpha'): 0.01, ('adr', 'feature_selection__estimator__alpha'): 0.01}}
+
+mean_score: [
+    {
+        "mean_score": 0.4845,
+        "valid_scores": [
+            0.5098039215686274,
+            0.6209150326797386,
+            0.6078431372549019,
+            0.45695364238410596,
+            0.3888888888888889,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.3836065573770492,
+            0.41530054644808745,
+            0.4369158878504673,
+            0.44171779141104295,
+            0.4672727272727273,
+            0.44170771756978655
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4882,
+        "valid_scores": [
+            0.5098039215686274,
+            0.6209150326797386,
+            0.6078431372549019,
+            0.45695364238410596,
+            0.4111111111111111,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.3836065573770492,
+            0.4180327868852459,
+            0.4392523364485981,
+            0.4437627811860941,
+            0.4672727272727273,
+            0.4433497536945813
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4882,
+        "valid_scores": [
+            0.5228758169934641,
+            0.6143790849673203,
+            0.6078431372549019,
+            0.4503311258278146,
+            0.4111111111111111,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4180327868852459,
+            0.4392523364485981,
+            0.44171779141104295,
+            0.46545454545454545,
+            0.4433497536945813
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4904,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6274509803921569,
+            0.6078431372549019,
+            0.45695364238410596,
+            0.4111111111111111,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4180327868852459,
+            0.4369158878504673,
+            0.4437627811860941,
+            0.4636363636363636,
+            0.44170771756978655
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4904,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6274509803921569,
+            0.6078431372549019,
+            0.45695364238410596,
+            0.4111111111111111,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4180327868852459,
+            0.4369158878504673,
+            0.4437627811860941,
+            0.4636363636363636,
+            0.44170771756978655
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4904,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6274509803921569,
+            0.6078431372549019,
+            0.45695364238410596,
+            0.4111111111111111,
+            0.3225806451612903
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4180327868852459,
+            0.4369158878504673,
+            0.4437627811860941,
+            0.4636363636363636,
+            0.44170771756978655
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.4981,
+        "valid_scores": [
+            0.5098039215686274,
+            0.6209150326797386,
+            0.6013071895424836,
+            0.4370860927152318,
+            0.4,
+            0.41935483870967744
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.41530054644808745,
+            0.4439252336448598,
+            0.4458077709611452,
+            0.4818181818181818,
+            0.4614121510673235
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.4992,
+        "valid_scores": [
+            0.5098039215686274,
+            0.6143790849673203,
+            0.6013071895424836,
+            0.4503311258278146,
+            0.4,
+            0.41935483870967744
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4098360655737705,
+            0.45093457943925236,
+            0.4458077709611452,
+            0.48363636363636364,
+            0.4630541871921182
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5002,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6339869281045751,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.41935483870967744
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.41530054644808745,
+            0.4439252336448598,
+            0.4437627811860941,
+            0.48,
+            0.45977011494252873
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5002,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6339869281045751,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.41935483870967744
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.41530054644808745,
+            0.4439252336448598,
+            0.4437627811860941,
+            0.48,
+            0.458128078817734
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5003,
+        "valid_scores": [
+            0.5098039215686274,
+            0.6209150326797386,
+            0.6013071895424836,
+            0.4503311258278146,
+            0.4,
+            0.41935483870967744
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.4098360655737705,
+            0.45093457943925236,
+            0.4458077709611452,
+            0.48363636363636364,
+            0.4614121510673235
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5013,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6078431372549019,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.45161290322580644
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.412568306010929,
+            0.4485981308411215,
+            0.4437627811860941,
+            0.48,
+            0.46469622331691296
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5013,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6078431372549019,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.45161290322580644
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.412568306010929,
+            0.4485981308411215,
+            0.4437627811860941,
+            0.48,
+            0.4630541871921182
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5013,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6078431372549019,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.45161290322580644
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.412568306010929,
+            0.4485981308411215,
+            0.4437627811860941,
+            0.48,
+            0.4630541871921182
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.5013,
+        "valid_scores": [
+            0.5163398692810458,
+            0.6078431372549019,
+            0.6013071895424836,
+            0.4304635761589404,
+            0.4,
+            0.45161290322580644
+        ],
+        "train_scores": [
+            0.380327868852459,
+            0.412568306010929,
+            0.4485981308411215,
+            0.4437627811860941,
+            0.48,
+            0.4630541871921182
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.6884,
+        "valid_scores": [
+            0.477124183006536,
+            0.7254901960784313,
+            0.7843137254901961,
+            0.7748344370860927,
+            0.7555555555555555,
+            0.6129032258064516
+        ],
+        "train_scores": [
+            0.4163934426229508,
+            0.4972677595628415,
+            0.46261682242990654,
+            0.5030674846625767,
+            0.5236363636363637,
+            0.5057471264367817
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 0.6884,
+        "valid_scores": [
+            0.477124183006536,
+            0.7254901960784313,
+            0.7843137254901961,
+            0.7748344370860927,
+            0.7555555555555555,
+            0.6129032258064516
+        ],
+        "train_scores": [
+            0.4163934426229508,
+            0.4972677595628415,
+            0.46261682242990654,
+            0.5030674846625767,
+            0.5236363636363637,
+            0.5057471264367817
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 0.6891,
+        "valid_scores": [
+            0.48366013071895425,
+            0.7058823529411765,
+            0.7973856209150327,
+            0.7682119205298014,
+            0.7666666666666667,
+            0.6129032258064516
+        ],
+        "train_scores": [
+            0.4163934426229508,
+            0.4972677595628415,
+            0.4602803738317757,
+            0.5030674846625767,
+            0.52,
+            0.49917898193760263
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 0.6891,
+        "valid_scores": [
+            0.48366013071895425,
+            0.7058823529411765,
+            0.7973856209150327,
+            0.7682119205298014,
+            0.7666666666666667,
+            0.6129032258064516
+        ],
+        "train_scores": [
+            0.4163934426229508,
+            0.4972677595628415,
+            0.4602803738317757,
+            0.5030674846625767,
+            0.52,
+            0.49917898193760263
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.01,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 0.8181,
+        "valid_scores": [
+            0.8366013071895425,
+            0.6405228758169934,
+            0.7581699346405228,
+            0.8079470198675497,
+            0.8333333333333334,
+            1.032258064516129
+        ],
+        "train_scores": [
+            0.6622950819672131,
+            0.7841530054644809,
+            0.9228971962616822,
+            1.0204498977505112,
+            0.9945454545454545,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8181,
+        "valid_scores": [
+            0.8366013071895425,
+            0.6405228758169934,
+            0.7581699346405228,
+            0.8079470198675497,
+            0.8333333333333334,
+            1.032258064516129
+        ],
+        "train_scores": [
+            0.6622950819672131,
+            0.7841530054644809,
+            0.9252336448598131,
+            1.0204498977505112,
+            0.9945454545454545,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8313,
+        "valid_scores": [
+            0.8235294117647058,
+            0.6601307189542484,
+            0.7581699346405228,
+            0.8145695364238411,
+            0.8666666666666667,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6754098360655738,
+            0.7978142076502732,
+            0.9112149532710281,
+            1.0204498977505112,
+            0.9818181818181818,
+            0.9605911330049262
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8313,
+        "valid_scores": [
+            0.8235294117647058,
+            0.6601307189542484,
+            0.7581699346405228,
+            0.8145695364238411,
+            0.8666666666666667,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6754098360655738,
+            0.7978142076502732,
+            0.9112149532710281,
+            1.0204498977505112,
+            0.9818181818181818,
+            0.9605911330049262
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8324,
+        "valid_scores": [
+            0.8235294117647058,
+            0.6601307189542484,
+            0.7581699346405228,
+            0.8211920529801324,
+            0.8666666666666667,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6754098360655738,
+            0.7978142076502732,
+            0.9112149532710281,
+            1.0204498977505112,
+            0.9818181818181818,
+            0.9622331691297209
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8376,
+        "valid_scores": [
+            0.8431372549019608,
+            0.6862745098039216,
+            0.6993464052287581,
+            0.8543046357615894,
+            0.8777777777777778,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6721311475409836,
+            0.8169398907103825,
+            0.9299065420560748,
+            1.0265848670756645,
+            1.0072727272727273,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8376,
+        "valid_scores": [
+            0.8431372549019608,
+            0.6862745098039216,
+            0.6993464052287581,
+            0.8543046357615894,
+            0.8777777777777778,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6721311475409836,
+            0.8169398907103825,
+            0.9299065420560748,
+            1.0265848670756645,
+            1.0072727272727273,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8376,
+        "valid_scores": [
+            0.8431372549019608,
+            0.6862745098039216,
+            0.6993464052287581,
+            0.8543046357615894,
+            0.8777777777777778,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6721311475409836,
+            0.8169398907103825,
+            0.9299065420560748,
+            1.0245398773006136,
+            1.0072727272727273,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8376,
+        "valid_scores": [
+            0.8431372549019608,
+            0.6862745098039216,
+            0.6993464052287581,
+            0.8543046357615894,
+            0.8777777777777778,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6721311475409836,
+            0.8169398907103825,
+            0.9299065420560748,
+            1.0245398773006136,
+            1.0072727272727273,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8376,
+        "valid_scores": [
+            0.8431372549019608,
+            0.6862745098039216,
+            0.6993464052287581,
+            0.8543046357615894,
+            0.8777777777777778,
+            1.064516129032258
+        ],
+        "train_scores": [
+            0.6721311475409836,
+            0.8169398907103825,
+            0.9299065420560748,
+            1.0245398773006136,
+            1.0072727272727273,
+            0.9835796387520526
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.1
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9182242990654206,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9688013136288999
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8477,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7254901960784313,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9182242990654206,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9688013136288999
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8488,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7320261437908496,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 0.8488,
+        "valid_scores": [
+            0.8300653594771242,
+            0.6928104575163399,
+            0.7320261437908496,
+            0.8410596026490066,
+            0.9,
+            1.096774193548387
+        ],
+        "train_scores": [
+            0.6950819672131148,
+            0.8114754098360656,
+            0.9205607476635514,
+            1.01840490797546,
+            0.9945454545454545,
+            0.9671592775041051
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 0.01
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7180327868852459,
+            0.8661202185792349,
+            0.9392523364485982,
+            1.0245398773006136,
+            1.0036363636363637,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7147540983606557,
+            0.8661202185792349,
+            0.9369158878504673,
+            1.0245398773006136,
+            1.0054545454545454,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7147540983606557,
+            0.8661202185792349,
+            0.9369158878504673,
+            1.0245398773006136,
+            1.0054545454545454,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7147540983606557,
+            0.8661202185792349,
+            0.9369158878504673,
+            1.0245398773006136,
+            1.0054545454545454,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7147540983606557,
+            0.8661202185792349,
+            0.9369158878504673,
+            1.0245398773006136,
+            1.0054545454545454,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7147540983606557,
+            0.8661202185792349,
+            0.9369158878504673,
+            1.0245398773006136,
+            1.0054545454545454,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0503,
+        "valid_scores": [
+            0.8627450980392157,
+            0.869281045751634,
+            1.0065359477124183,
+            1.2450331125827814,
+            1.1888888888888889,
+            1.1290322580645162
+        ],
+        "train_scores": [
+            0.7180327868852459,
+            0.8661202185792349,
+            0.9392523364485982,
+            1.0245398773006136,
+            1.0036363636363637,
+            1.0
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 0.1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.001,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1000.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 1,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.1,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 10.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    },
+    {
+        "mean_score": 1.0589,
+        "valid_scores": [
+            0.8496732026143791,
+            0.869281045751634,
+            0.9215686274509803,
+            1.2649006622516556,
+            1.2222222222222223,
+            1.2258064516129032
+        ],
+        "train_scores": [
+            0.7344262295081967,
+            0.8688524590163934,
+            0.9485981308411215,
+            1.0102249488752557,
+            1.0145454545454546,
+            1.0049261083743843
+        ],
+        "params": {
+            "cancel, feature_selection__estimator__alpha": 1,
+            "cancel, classification__C": 100.0,
+            "adr, regression__alpha": 0.01,
+            "adr, feature_selection__estimator__alpha": 1
+        }
+    }
+]

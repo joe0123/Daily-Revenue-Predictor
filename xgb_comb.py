@@ -22,12 +22,12 @@ os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 #                    n_estimators=250, gamma=0).set_params(**cancel_params)) for i, cancel_params in enumerate(all_cancel_params)])
 
 adr_model = XGBRegressor(tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, \
-                        n_estimators=200, learning_rate=0.1, min_child_weight=8, max_depth=8, gamma=0, \
-                        subsample=0.7, colsample_bytree=0.8, reg_lambda=1, reg_alpha=1e-3)
+                        n_estimators=200, learning_rate=0.08, min_child_weight=10, max_depth=8, gamma=3, \
+                        subsample=0.8, colsample_bytree=0.8, reg_lambda=1e-3, reg_alpha=0)
 cancel_model = XGBClassifier(objective="binary:logistic", eval_metric="error", \
                             tree_method="gpu_hist", predictor="gpu_predictor", random_state=0, use_label_encoder=False, \
-                            n_estimators=250, learning_rate=0.08, min_child_weight=8, max_depth=3, gamma=0, \
-                            subsample=0.7, colsample_bytree=0.8, reg_lambda=1, reg_alpha=1e-3)
+                            n_estimators=250, learning_rate=0.08, min_child_weight=10, max_depth=3, gamma=3, \
+                            subsample=0.8, colsample_bytree=0.8, reg_lambda=1, reg_alpha=0)
 
 model = DailyRevenueEstimator(adr_model, cancel_model)
 
