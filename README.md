@@ -1,4 +1,6 @@
-# Machine Learning Techniques final project
+# Revenue-Predictor
+
+Machine Learning Techniques final project
 
 Instructor: 
 1. Hsuan-Tien Lin (林軒田)
