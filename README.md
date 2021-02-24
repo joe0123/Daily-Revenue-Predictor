@@ -1,4 +1,4 @@
-# Revenue-Predictor
+# Daily-Revenue-Predictor
 
 Machine Learning Techniques final project
 
